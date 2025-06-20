@@ -16,7 +16,8 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
         model_id = model_id,
         body = AnalyzeDocumentRequest(bytes_source=f.read()),
         features=[
-            DocumentAnalysisFeature.BARCODES
+            DocumentAnalysisFeature.BARCODES,
+            DocumentAnalysisFeature.FORMULAS
         ],
         output=[AnalyzeOutputOption.FIGURES],
     )

@@ -1,16 +1,18 @@
 import os
 import json
 import fitz  # PyMuPDF
+from dotenv import load_dotenv
 
 from Rpost import post
 from Rget import get
 from to_html import layout_to_html
 from figure_get import download_all_figures_from_json
 
-endpoint = "https://azuredemo70.cognitiveservices.azure.com"
+load_dotenv()
+endpoint = os.getenv("ENDPOINT")
 model_id = "prebuilt-layout"
 api_version = "2024-11-30"
-subscription_key = "Cey04m2tukpZkObAKcH3LTMwEUJEuHHZeZnRdAUiW9KmxUvOkfkwJQQJ99BFACGhslBXJ3w3AAALACOGQUJ2"
+subscription_key = os.getenv("SUBSCRIPTION_KEY")
 url_source = "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/rest-api/invoice.pdf"
 pdf_path = "/home/vatsal/Documents/VS Code/Azure/Read_Models/D0879824.pdf"
 output_dir = "/home/vatsal/Documents/VS Code/Azure/chunks"

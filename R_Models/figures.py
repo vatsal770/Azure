@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence import DocumentIntelligenceClient
@@ -6,9 +7,9 @@ from azure.ai.documentintelligence.models import AnalyzeOutputOption, AnalyzeDoc
 
 # endpoint = os.environ["DOCUMENTINTELLIGENCE_ENDPOINT"]
 # key = os.environ["DOCUMENTINTELLIGENCE_API_KEY"]
-
-endpoint = "https://azuredemo70.cognitiveservices.azure.com"
-key = "Cey04m2tukpZkObAKcH3LTMwEUJEuHHZeZnRdAUiW9KmxUvOkfkwJQQJ99BFACGhslBXJ3w3AAALACOGQUJ2"
+load_dotenv()
+endpoint = os.getenv("ENDPOINT")
+key = os.getenv("SUBSCRIPTION_KEY")
 
 document_intelligence_client = DocumentIntelligenceClient(endpoint=endpoint, credential=AzureKeyCredential(key))
 path_to_sample_documents = "/home/vatsal/Documents/VS Code/Azure/Read_Models/D0879824.pdf"  
