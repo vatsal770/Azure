@@ -1,0 +1,28 @@
+AmountDue: 610.0
+BillingAddress: 123 Bill St, Redmond WA, 98052
+BillingAddressRecipient: Microsoft Finance
+CustomerAddress: 123 Other St, Redmond WA, 98052
+CustomerAddressRecipient: Microsoft Corp
+CustomerId: CID-12345
+CustomerName: MICROSOFT CORPORATION
+DueDate: 2019-12-15
+InvoiceDate: 2019-11-15
+InvoiceId: INV-100
+InvoiceTotal: 110.0
+Items: [{'Amount': '60.0', 'Date': '2021-03-04', 'Description': 'Consulting Services', 'ProductCode': 'A123', 'Quantity': 2, 'Tax': '6.0', 'Unit': 'hours', 'UnitPrice': '30.0'}, {'Amount': '30.0', 'Date': '2021-03-05', 'Description': 'Document Fee', 'ProductCode': 'B456', 'Quantity': 3, 'Tax': '3.0', 'UnitPrice': '10.0'}, {'Amount': '10.0', 'Date': '2021-03-06', 'Description': 'Printing Fee', 'ProductCode': 'C789', 'Quantity': 10, 'Tax': '1.0', 'Unit': 'pages', 'UnitPrice': '1.0'}]
+PreviousUnpaidBalance: 500.0
+PurchaseOrder: PO-3333
+RemittanceAddress: 123 Remit St New York, NY, 10001
+RemittanceAddressRecipient: Contoso Billing
+ServiceAddress: 123 Service St, Redmond WA, 98052
+ServiceAddressRecipient: Microsoft Services
+ServiceEndDate: 2019-11-14
+ServiceStartDate: 2019-10-14
+ShippingAddress: 123 Ship St, Redmond WA, 98052
+ShippingAddressRecipient: Microsoft Delivery
+SubTotal: 100.0
+TaxDetails: [{'Amount': '10.0'}]
+TotalTax: 10.0
+VendorAddress: 123 456th St New York, NY, 10001
+VendorAddressRecipient: Contoso Headquarters
+VendorName: CONTOSO LTD.

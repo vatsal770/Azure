@@ -1,0 +1,238 @@
+<html><head><style>
+body { margin: 0; padding: 0; font-family: Arial; }
+.page { position: relative; width: 850px; height: 1100px; border: 1px solid #ccc; margin: 20px auto; }
+.block, .figure { position: absolute; font-size: 12px; line-height: 1.4; white-space: pre-wrap; }
+.block.title { font-size: 16px; font-weight: bold; color: #002855; }
+.block.header { font-size: 14px; color: #666; }
+.block.heading { font-size: 12px; font-weight: bold; color: #444; }
+.block.footnote { font-size: 10px; font-style: italic; color: #777; }
+.block.footer { font-size: 10px; text-align: center; color: #999; }
+img.figure-img { width: 100%; height: 100%; object-fit: contain; }
+</style></head><body>
+<div class="page" id="page-1">
+<div class="block header" style="left: 283.22px; top: 63.90px; width: 262.48px; height: 15.11px;">Compressing GANs using Knowledge Distillation</div>
+<div class="block" style="left: 75.27px; top: 94.99px; width: 328.76px; height: 148.99px;">erative setting. Serving as motivation for these adaptations is the idea that large over-parameterized networks have nicer loss landscapes than smaller ones, and are thus able to learn better quality mappings, regardless of whether an approxi- mately equivalent mapping exists for smaller networks. We experimentally validate these methods on several datasets and via a number of objective measurements. Lastly, we discuss the limit of compression in the GAN setting and how it appears in empirical results.</div>
+<div class="block heading" style="left: 75.37px; top: 265.41px; width: 105.86px; height: 18.57px;">2. Background</div>
+<div class="block heading" style="left: 75.71px; top: 293.76px; width: 224.54px; height: 15.52px;">2.1. Generative Adversarial Networks</div>
+<div class="block" style="left: 75.50px; top: 319.69px; width: 328.81px; height: 99.60px;">GAN was first proposed as a two player min-max optimiza- tion problem between a discriminator fw(.) and a generator ge(.) as in (1) (Goodfellow et al., 2014). The generator is tasked with generating realistic examples that fool the discriminator while the discriminator learns how to differ- entiate between the real and the generated samples.</div>
+<div class="block" style="left: 151.94px; top: 431.95px; width: 249.87px; height: 46.39px;">min max Ex~pdata [log(fw(x)] ΘΕΘ WEW +Ez~pz[log(1-fw(ge(z)))] (1)</div>
+<div class="block" style="left: 75.16px; top: 489.83px; width: 329.11px; height: 264.79px;">The optimization in (1) has a global minimum and the sys- tem converges when pg = Pdata at which point, fw(.) can- not classify a sample as being generated from pg or from Pdata. Further, the optimal solution to (1) corresponds to minimizing the Jensen-Shannon (JS) divergence between the two distributions pdata and pg (Goodfellow et al., 2014). However, training of GANs is often unstable because JS divergence is not well defined when pg and Pdata do not have the same support (Arjovsky et al., 2017). To solve the problem with using JS divergence, WGAN minimizes the Wasserstein's distance between pg and Pdata in place of the JS divergence(Arjovsky et al., 2017), which is well defined even when pg and pdata have disjoint support. Specifically, WGAN attempts to solve the optimization problem in (2), where fw(.) is a Lipschitz bounded function. (Arjovsky et al., 2017).</div>
+<div class="block" style="left: 98.16px; top: 768.53px; width: 304.47px; height: 23.77px;">min max Ex~pdata [fw(x)] -Ez~pz[fw(ge(z))] (2) ΘΕΘ WEW</div>
+<div class="block" style="left: 74.99px; top: 803.51px; width: 328.54px; height: 82.52px;">WGAN was used in place of regular GAN for most of our experiments due to its favorable characteristics. However, empirically, we noticed that WGAN does not work as well for the Celeb-A dataset, so we reverted to using regular GAN for all Celeb-A related experiments.</div>
+<div class="block heading" style="left: 75.67px; top: 905.11px; width: 160.71px; height: 15.30px;">2.2. Knowledge Distillation</div>
+<div class="block" style="left: 75.31px; top: 931.15px; width: 327.83px; height: 66.60px;">Knowledge distillation refers to the technique of transferring the knowledge learned, from an ensemble of networks to a single network, or from a network with high number of parameters, to a network with relatively low number of</div>
+<div class="block" style="left: 425.23px; top: 94.82px; width: 327.46px; height: 32.21px;">parameters. We refer to the bigger network as the teacher network and the smaller network as the student network.</div>
+<div class="block" style="left: 425.37px; top: 136.61px; width: 328.59px; height: 148.49px;">A student can learn to match any activation layer in the teacher network. Learning parameters from the final layer, called hard targets, lends itself to shorter training time but increased chance of over-fitting. The inputs to the softmax layer (logits) of the teacher network, referred to as soft tar- gets, on the other hand, have more descriptive information about the samples and give better generalization character- istics to the student network (Hinton et al., 2015), which makes training on soft targets more beneficial.</div>
+<div class="block heading" style="left: 425.35px; top: 303.70px; width: 237.78px; height: 15.88px;">2.3. Over-parameterization of Networks</div>
+<div class="block" style="left: 425.04px; top: 329.97px; width: 329.28px; height: 381.84px;">An over-parameterized network is described as one whose number of hidden units is polynomially large relative to the number of training samples (Allen-Zhu et al., 2018b). It has been shown that training a significantly over-parameterized GAN yields dramatically better results than those gener- ated from a smaller network (Brock et al., 2018). This may be explained by a finding that showed that the over- parameterization of neural networks creates optimized loss functions with many good minima spread throughout the en- tire loss landscape allowing for efficient training with alter- nating gradient descent (Allen-Zhu et al., 2018b) (Allen-Zhu et al., 2018a). This theory was bolstered by recent empirical studies of loss functions using visualization methods (Li et al., 2018). Therefore, it is necessary that a bigger net- work learn these mappings in a hyper-parameterized space before it can be distilled to a simpler model. Likewise, there has been empirical evidence that knowledge distillation, or model compression, is successful (Hinton et al., 2015) (Bucilu et al., 2006) (Yim et al., 2017). This success may be attributed to the aforementioned phenomena. Although training a teacher network might require a higher number of parameters, a reduced number of parameters is sufficient to describe the model with high fidelity.</div>
+<div class="block heading" style="left: 425.23px; top: 733.41px; width: 80.63px; height: 16.39px;">3. Methods</div>
+<div class="block" style="left: 424.96px; top: 761.59px; width: 329.06px; height: 97.59px;">The teacher (large, over-parameterized network) and student (small, few parameter network) GANs used either the orig- inal DCGAN architecture or a slightly modified DCGAN architecture (Radford et al., 2015), more closely resembling the WGAN (Arjovsky et al., 2017), referenced as the W- DCGAN.</div>
+<div class="block" style="left: 425.23px; top: 869.70px; width: 329.00px; height: 65.33px;">The number of parameters in our networks is controlled by the depth scale factor, referenced throughout the paper as d. The overall number of parameters increases approximately linearly to d2.</div>
+</div>
+<div class="page" id="page-2">
+<div class="block header" style="left: 283.08px; top: 63.73px; width: 262.63px; height: 15.49px;">Compressing GANs using Knowledge Distillation</div>
+<div class="block" style="left: 90.56px; top: 123.05px; width: 5.36px; height: 8.38px;">8</div>
+<div class="block" style="left: 314.89px; top: 123.63px; width: 8.89px; height: 8.17px;">50</div>
+<div class="block" style="left: 547.35px; top: 125.95px; width: 8.61px; height: 7.97px;">50</div>
+<div class="block" style="left: 90.96px; top: 163.37px; width: 4.92px; height: 8.01px;">6</div>
+<div class="block" style="left: 314.75px; top: 155.83px; width: 9.17px; height: 7.83px;">40</div>
+<div class="block" style="left: 547.23px; top: 157.22px; width: 8.71px; height: 7.74px;">40</div>
+<div class="block" style="left: 77.72px; top: 175.41px; width: 10.38px; height: 71.35px;">Inception Score</div>
+<div class="block" style="left: 314.92px; top: 188.01px; width: 8.75px; height: 7.77px;">30</div>
+<div class="block" style="left: 547.18px; top: 188.24px; width: 8.63px; height: 7.63px;">30</div>
+<div class="block" style="left: 90.55px; top: 203.32px; width: 5.02px; height: 7.73px;">4</div>
+<div class="block" style="left: 304.06px; top: 202.59px; width: 9.73px; height: 19.88px;">FID</div>
+<div class="block" style="left: 314.87px; top: 220.20px; width: 8.96px; height: 7.97px;">20</div>
+<div class="block" style="left: 547.49px; top: 219.32px; width: 8.43px; height: 7.61px;">20</div>
+<div class="block" style="left: 90.48px; top: 242.76px; width: 5.29px; height: 8.27px;">2</div>
+<div class="block" style="left: 315.24px; top: 252.57px; width: 8.37px; height: 7.95px;">10</div>
+<div class="block" style="left: 547.68px; top: 250.35px; width: 8.37px; height: 7.86px;">10</div>
+<div class="block" style="left: 90.71px; top: 282.45px; width: 5.04px; height: 8.21px;">0</div>
+<div class="block" style="left: 318.93px; top: 284.79px; width: 4.76px; height: 7.27px;">0</div>
+<div class="block" style="left: 551.17px; top: 281.39px; width: 5.00px; height: 7.97px;">0</div>
+<div class="block" style="left: 109.20px; top: 292.16px; width: 5.30px; height: 8.38px;">2</div>
+<div class="block" style="left: 133.01px; top: 292.35px; width: 5.44px; height: 8.04px;">4</div>
+<div class="block" style="left: 157.04px; top: 292.33px; width: 5.26px; height: 7.81px;">8</div>
+<div class="block" style="left: 178.98px; top: 292.11px; width: 9.35px; height: 8.30px;">16</div>
+<div class="block" style="left: 202.49px; top: 292.05px; width: 9.40px; height: 8.43px;">32</div>
+<div class="block" style="left: 226.27px; top: 292.36px; width: 9.88px; height: 8.09px;">64</div>
+<div class="block" style="left: 248.30px; top: 291.79px; width: 13.66px; height: 8.79px;">128</div>
+<div class="block" style="left: 271.25px; top: 291.80px; width: 15.05px; height: 9.01px;">256</div>
+<div class="block" style="left: 336.55px; top: 294.58px; width: 5.47px; height: 8.02px;">2</div>
+<div class="block" style="left: 360.87px; top: 294.59px; width: 5.74px; height: 8.00px;">4</div>
+<div class="block" style="left: 385.47px; top: 294.42px; width: 5.14px; height: 8.29px;">8</div>
+<div class="block" style="left: 407.89px; top: 294.28px; width: 10.00px; height: 8.96px;">16</div>
+<div class="block" style="left: 431.91px; top: 294.07px; width: 10.13px; height: 9.17px;">32</div>
+<div class="block" style="left: 456.41px; top: 294.39px; width: 10.08px; height: 8.68px;">64</div>
+<div class="block" style="left: 478.61px; top: 294.02px; width: 14.57px; height: 9.37px;">128</div>
+<div class="block" style="left: 502.19px; top: 293.94px; width: 15.53px; height: 9.33px;">256</div>
+<div class="block" style="left: 570.04px; top: 290.98px; width: 5.54px; height: 8.55px;">2</div>
+<div class="block" style="left: 597.99px; top: 291.18px; width: 5.26px; height: 8.22px;">4</div>
+<div class="block" style="left: 625.20px; top: 291.43px; width: 5.12px; height: 7.95px;">8</div>
+<div class="block" style="left: 650.42px; top: 290.98px; width: 9.58px; height: 8.44px;">16</div>
+<div class="block" style="left: 677.59px; top: 290.80px; width: 9.85px; height: 9.02px;">32</div>
+<div class="block" style="left: 704.70px; top: 290.93px; width: 10.35px; height: 8.61px;">64</div>
+<div class="block" style="left: 730.40px; top: 290.57px; width: 14.34px; height: 9.26px;">128</div>
+<div class="block" style="left: 146.42px; top: 305.42px; width: 97.88px; height: 12.34px;">Teacher GAN Size (d)</div>
+<div class="block" style="left: 373.99px; top: 307.97px; width: 101.58px; height: 11.96px;">Teacher GAN Size (d)</div>
+<div class="block" style="left: 605.37px; top: 304.48px; width: 98.75px; height: 12.90px;">Teacher GAN Size (d)</div>
+<div class="block" style="left: 75.35px; top: 335.03px; width: 677.82px; height: 45.89px;">Figure 2. The Inception Score and Frechet Inception Distance was used to evaluate the best teacher GAN, parameterized by the depth scale factor d. A high Inception Score is good and a low Frechet Inception Distance is good. From these results, we selected a teacher GAN size of d = 256 for MNIST, d = 64 for CIFAR-10 and d = 128 for Celeb-A (left to right).</div>
+<div class="block" style="left: 88.45px; top: 440.62px; width: 6.46px; height: 7.92px;">z'</div>
+<div class="block" style="left: 166.39px; top: 438.62px; width: 50.59px; height: 12.14px;">Teacher G</div>
+<div class="block" style="left: 117.61px; top: 456.93px; width: 35.73px; height: 8.54px;">W-DCGAN</div>
+<div class="block" style="left: 284.14px; top: 465.30px; width: 37.31px; height: 10.04px;">MSE Loss</div>
+<div class="block" style="left: 171.53px; top: 490.01px; width: 6.24px; height: 7.83px;">z'</div>
+<div class="block" style="left: 208.74px; top: 488.97px; width: 49.47px; height: 11.74px;">Student G</div>
+<div class="block" style="left: 75.31px; top: 527.13px; width: 327.32px; height: 76.83px;">Figure 3. Student-teacher training framework with mean squared error (MSE) loss for student training. The teacher generator was trained using DCGAN framework (Radford et al., 2015) including WGAN modifications (Arjovsky et al., 2017). A mathematical analogy is shown in (3).</div>
+<div class="block" style="left: 160.62px; top: 635.14px; width: 5.29px; height: 6.81px;">Z</div>
+<div class="block" style="left: 195.03px; top: 633.79px; width: 45.90px; height: 11.44px;">Student G</div>
+<div class="block" style="left: 305.40px; top: 655.40px; width: 34.91px; height: 9.76px;">MSE Loss</div>
+<div class="block" style="left: 347.61px; top: 649.02px; width: 21.43px; height: 10.13px;">(1 - α)</div>
+<div class="block" style="left: 158.01px; top: 677.31px; width: 46.79px; height: 11.52px;">Teacher G</div>
+<div class="block" style="left: 352.53px; top: 673.99px; width: 34.93px; height: 9.58px;">Joint Loss</div>
+<div class="block" style="left: 86.66px; top: 681.67px; width: 3.84px; height: 3.65px;">z</div>
+<div class="block" style="left: 300.47px; top: 687.60px; width: 45.01px; height: 19.24px;">Binary Cross Entropy Loss</div>
+<div class="block" style="left: 112.69px; top: 695.21px; width: 24.21px; height: 7.54px;">DCGAN</div>
+<div class="block" style="left: 360.20px; top: 700.20px; width: 5.31px; height: 6.70px;">α</div>
+<div class="block" style="left: 210.56px; top: 718.87px; width: 46.99px; height: 11.67px;">Teacher D</div>
+<div class="block" style="left: 75.32px; top: 764.12px; width: 327.52px; height: 60.80px;">Figure 4. Student-teacher training framework with joint loss for student training. The teacher generator was trained using DCGAN framework (Radford et al., 2015). A mathematical analogy is shown (4).</div>
+<div class="block heading" style="left: 75.90px; top: 836.00px; width: 78.06px; height: 17.55px;">4. Analysis</div>
+<div class="block" style="left: 75.09px; top: 864.09px; width: 329.06px; height: 132.80px;">In the case of classification networks, the performance can be measured by the classification accuracy. Unlike classifi- cation networks, GANs do not have an explicit measure for performance. The performance of GANs could be naively measured by human judgment of visual quality (Goodfellow et al., 2014). For example, one could collect scores (1 to 10) of visual quality from various subjects and average the scores to understand the performance of GANs. However,</div>
+<div class="block" style="left: 425.34px; top: 409.66px; width: 328.84px; height: 149.20px;">the method is very expensive. The score could also vary significantly based on the design of the interface used to collect the data (Goodfellow et al., 2014). To evaluate the performance of GANs more systematically, the field has developed several quantitative metrics. Some of the popular metrics are Inception Score and Frechet Inception Distance (FID). Additionally, we used Variance of Laplacian to eval- uate the blurring artifacts inherent to compressing GANs trained on complex datasets.</div>
+<div class="block heading" style="left: 425.82px; top: 577.36px; width: 143.47px; height: 16.22px;">4.1. Inception Score (IS)</div>
+<div class="block" style="left: 425.31px; top: 602.93px; width: 328.72px; height: 182.77px;">There are two important things that we would like to see in images generated from good GANs. First, we would like it to generate diverse images. We would like p(y) to be relatively equal across different classes (Goodfellow et al., 2014). Secondly, given a generated image, we would like to be confident of the class in which the image belongs. Given a generated image x, we would like p(y|x) to be very concentrated in a particular class (Goodfellow et al., 2014). To take both of the desired qualities into account, the cross entropy, H (., .), between p(y) and p(y|x) can be taken, otherwise known as the Inception Score.</div>
+<div class="block" style="left: 526.02px; top: 795.67px; width: 225.87px; height: 18.67px;">IS = H(p(y), p(y|x)) (5)</div>
+<div class="block" style="left: 425.19px; top: 822.89px; width: 328.95px; height: 66.27px;">If p(y) is similar across classes and p(y|x) is very concen- trated in a particular class, then the cross entropy between the two distributions will be high. Consequently, the Incep- tion Score will be high.</div>
+<div class="block" style="left: 425.25px; top: 897.76px; width: 328.26px; height: 98.83px;">The Inception Scores makes a few assumptions. First, it assumes that the image can be classified yielding p(y) and p(y|x), but not all images can be classified. For example, in our experiments with the Celeb-A dataset, we could not use Inception Score because the data set does not have labels associated with them. Second, the Inception Score is</div>
+<div class="figure" style="left: 78.59px; top: 116.92px; width: 672.82px; height: 204.23px;"><img class="figure-img" src="figures/GAN1/2.1.png" alt="Figure 2.1"/></div>
+<div class="figure" style="left: 83.68px; top: 431.64px; width: 256.12px; height: 75.78px;"><img class="figure-img" src="figures/GAN1/2.2.png" alt="Figure 2.2"/></div>
+<div class="figure" style="left: 83.09px; top: 626.52px; width: 313.66px; height: 109.47px;"><img class="figure-img" src="figures/GAN1/2.3.png" alt="Figure 2.3"/></div>
+</div>
+<div class="page" id="page-3">
+<div class="block header" style="left: 283.31px; top: 63.90px; width: 262.31px; height: 15.21px;">Compressing GANs using Knowledge Distillation</div>
+<div class="block" style="left: 75.47px; top: 104.25px; width: 677.14px; height: 75.87px;">Table 1. Compression Ratios and Image Quality Metrics for MNIST, CIFAR-10, Celeb-A. The respective metrics (IS, Inception Score and FID, Frechet Inception Distance) are shown for both the student GAN (Stu.) compared to a regularly trained GAN (Reg.) of corresponding size. For MNIST, CIFAR-10, and Celeb-A, the ratio shown is with respect to a teacher generator size of depth d = 256 (47,324,929 parameters, IS = 7.02), d = 64 (3,573,697 parameters, FID = 7.42), and d = 128 (12,652,417 parameters, FID = 4.39) respectively. All teacher GANs were trained with a discriminator of corresponding teacher depth.</div>
+<div class="block" style="left: 284.69px; top: 180.15px; width: 55.60px; height: 37.51px;">4</div>
+<div class="block" style="left: 400.75px; top: 180.15px; width: 198.77px; height: 20.14px;">GAN Size (d)</div>
+<div class="block" style="left: 598.82px; top: 180.15px; width: 73.67px; height: 38.20px;">64</div>
+<div class="block" style="left: 671.79px; top: 180.15px; width: 78.54px; height: 38.20px;">128</div>
+<div class="block" style="left: 228.40px; top: 200.29px; width: 56.29px; height: 17.37px;">2</div>
+<div class="block" style="left: 340.29px; top: 200.29px; width: 60.46px; height: 18.06px;">8</div>
+<div class="block" style="left: 400.75px; top: 200.29px; width: 62.55px; height: 18.06px;">16</div>
+<div class="block" style="left: 463.30px; top: 200.29px; width: 69.50px; height: 18.06px;">32</div>
+<div class="block" style="left: 532.80px; top: 200.29px; width: 66.72px; height: 18.06px;">48</div>
+<div class="block" style="left: 76.90px; top: 217.66px; width: 151.50px; height: 34.03px;">No. of Parameters</div>
+<div class="block" style="left: 228.40px; top: 217.66px; width: 56.29px; height: 34.03px;">28,351</div>
+<div class="block" style="left: 284.69px; top: 217.66px; width: 55.60px; height: 34.03px;">62,077</div>
+<div class="block" style="left: 340.29px; top: 217.66px; width: 60.46px; height: 34.03px;">145,657</div>
+<div class="block" style="left: 400.75px; top: 218.35px; width: 62.55px; height: 33.34px;">377,329</div>
+<div class="block" style="left: 463.30px; top: 218.35px; width: 69.50px; height: 33.34px;">109,8721</div>
+<div class="block" style="left: 532.80px; top: 218.35px; width: 66.72px; height: 33.34px;">216,4177</div>
+<div class="block" style="left: 599.52px; top: 218.35px; width: 72.97px; height: 33.34px;">3,573,697</div>
+<div class="block" style="left: 672.49px; top: 218.35px; width: 77.84px; height: 33.34px;">12,652,417</div>
+<div class="block" style="left: 76.90px; top: 251.69px; width: 76.44px; height: 50.70px;">MNIST</div>
+<div class="block" style="left: 152.65px; top: 251.69px; width: 75.75px; height: 15.97px;">Ratio</div>
+<div class="block" style="left: 228.40px; top: 251.69px; width: 56.29px; height: 15.97px;">1669:1</div>
+<div class="block" style="left: 284.69px; top: 251.69px; width: 55.60px; height: 15.97px;">762:1</div>
+<div class="block" style="left: 340.29px; top: 251.69px; width: 61.16px; height: 15.97px;">325:1</div>
+<div class="block" style="left: 400.75px; top: 251.69px; width: 62.55px; height: 15.97px;">125:1</div>
+<div class="block" style="left: 463.30px; top: 251.69px; width: 69.50px; height: 15.97px;">43:1</div>
+<div class="block" style="left: 532.80px; top: 251.69px; width: 66.72px; height: 15.97px;">—</div>
+<div class="block" style="left: 599.52px; top: 251.69px; width: 72.97px; height: 15.97px;">13:1</div>
+<div class="block" style="left: 672.49px; top: 251.69px; width: 77.84px; height: 15.97px;">4:1</div>
+<div class="block" style="left: 152.65px; top: 267.66px; width: 75.75px; height: 16.67px;">IS (Stu.)</div>
+<div class="block" style="left: 228.40px; top: 267.66px; width: 56.29px; height: 16.67px;">5.80</div>
+<div class="block" style="left: 284.69px; top: 267.66px; width: 55.60px; height: 16.67px;">6.41</div>
+<div class="block" style="left: 340.29px; top: 267.66px; width: 61.16px; height: 16.67px;">6.60</div>
+<div class="block" style="left: 401.45px; top: 267.66px; width: 61.85px; height: 16.67px;">6.83</div>
+<div class="block" style="left: 463.30px; top: 267.66px; width: 69.50px; height: 16.67px;">6.87</div>
+<div class="block" style="left: 532.80px; top: 267.66px; width: 66.72px; height: 16.67px;">— :unselected:</div>
+<div class="block" style="left: 599.52px; top: 267.66px; width: 72.97px; height: 16.67px;">6.93</div>
+<div class="block" style="left: 672.49px; top: 267.66px; width: 77.84px; height: 16.67px;">6.97</div>
+<div class="block" style="left: 152.65px; top: 284.33px; width: 75.75px; height: 18.06px;">IS (Reg.)</div>
+<div class="block" style="left: 228.40px; top: 284.33px; width: 56.29px; height: 18.06px;">1.86</div>
+<div class="block" style="left: 284.69px; top: 284.33px; width: 55.60px; height: 18.06px;">3.63</div>
+<div class="block" style="left: 340.29px; top: 284.33px; width: 61.16px; height: 18.06px;">4.73</div>
+<div class="block" style="left: 401.45px; top: 284.33px; width: 61.85px; height: 18.06px;">5.07</div>
+<div class="block" style="left: 463.30px; top: 284.33px; width: 69.50px; height: 18.06px;">6.08</div>
+<div class="block" style="left: 532.80px; top: 284.33px; width: 66.72px; height: 18.06px;">—</div>
+<div class="block" style="left: 599.52px; top: 284.33px; width: 72.97px; height: 18.06px;">6.51</div>
+<div class="block" style="left: 672.49px; top: 284.33px; width: 77.84px; height: 18.06px;">6.63</div>
+<div class="block" style="left: 76.90px; top: 302.39px; width: 76.44px; height: 50.01px;">CIFAR-10</div>
+<div class="block" style="left: 153.34px; top: 302.39px; width: 75.06px; height: 15.28px;">Ratio</div>
+<div class="block" style="left: 228.40px; top: 302.39px; width: 56.99px; height: 15.28px;">126:1</div>
+<div class="block" style="left: 284.69px; top: 302.39px; width: 55.60px; height: 15.28px;">58:1</div>
+<div class="block" style="left: 340.29px; top: 302.39px; width: 61.16px; height: 15.28px;">25:1</div>
+<div class="block" style="left: 401.45px; top: 302.39px; width: 61.85px; height: 15.28px;">9:1</div>
+<div class="block" style="left: 463.30px; top: 302.39px; width: 69.50px; height: 15.28px;">3:1</div>
+<div class="block" style="left: 532.80px; top: 302.39px; width: 66.72px; height: 15.28px;">2:1</div>
+<div class="block" style="left: 599.52px; top: 302.39px; width: 72.97px; height: 15.28px;">—</div>
+<div class="block" style="left: 672.49px; top: 302.39px; width: 77.84px; height: 15.98px;">—</div>
+<div class="block" style="left: 153.34px; top: 317.67px; width: 75.06px; height: 17.36px;">FID (Stu.)</div>
+<div class="block" style="left: 228.40px; top: 317.67px; width: 56.99px; height: 17.36px;">11.76</div>
+<div class="block" style="left: 285.39px; top: 317.67px; width: 54.90px; height: 17.36px;">11.00</div>
+<div class="block" style="left: 340.29px; top: 317.67px; width: 61.16px; height: 17.36px;">9.57</div>
+<div class="block" style="left: 401.45px; top: 317.67px; width: 61.85px; height: 17.36px;">8.39</div>
+<div class="block" style="left: 463.30px; top: 317.67px; width: 70.19px; height: 17.36px;">7.80</div>
+<div class="block" style="left: 532.80px; top: 317.67px; width: 67.41px; height: 17.36px;">7.58</div>
+<div class="block" style="left: 599.52px; top: 317.67px; width: 72.97px; height: 17.36px;">—</div>
+<div class="block" style="left: 672.49px; top: 317.67px; width: 77.84px; height: 17.36px;">—</div>
+<div class="block" style="left: 153.34px; top: 335.03px; width: 75.06px; height: 17.37px;">FID (Reg.)</div>
+<div class="block" style="left: 228.40px; top: 335.03px; width: 56.99px; height: 17.37px;">38.72</div>
+<div class="block" style="left: 285.39px; top: 335.03px; width: 54.90px; height: 17.37px;">14.28</div>
+<div class="block" style="left: 340.29px; top: 335.03px; width: 61.16px; height: 17.37px;">11.85</div>
+<div class="block" style="left: 401.45px; top: 335.03px; width: 61.85px; height: 17.37px;">9.90</div>
+<div class="block" style="left: 463.30px; top: 335.03px; width: 70.19px; height: 17.37px;">7.86</div>
+<div class="block" style="left: 533.49px; top: 335.03px; width: 66.72px; height: 17.37px;">7.64</div>
+<div class="block" style="left: 600.21px; top: 335.03px; width: 72.28px; height: 17.37px;">—</div>
+<div class="block" style="left: 672.49px; top: 335.03px; width: 78.53px; height: 17.37px;">—</div>
+<div class="block" style="left: 76.90px; top: 352.40px; width: 76.44px; height: 52.78px;">Celeb-A</div>
+<div class="block" style="left: 153.34px; top: 352.40px; width: 75.76px; height: 15.28px;">Ratio</div>
+<div class="block" style="left: 228.40px; top: 352.40px; width: 56.99px; height: 15.97px;">446:1</div>
+<div class="block" style="left: 285.39px; top: 352.40px; width: 54.90px; height: 15.97px;">204:1</div>
+<div class="block" style="left: 340.29px; top: 352.40px; width: 61.16px; height: 15.97px;">87:1</div>
+<div class="block" style="left: 401.45px; top: 352.40px; width: 61.85px; height: 15.97px;">34:1</div>
+<div class="block" style="left: 463.30px; top: 352.40px; width: 70.19px; height: 15.97px;">12:1</div>
+<div class="block" style="left: 533.49px; top: 352.40px; width: 66.72px; height: 15.97px;">6:1</div>
+<div class="block" style="left: 600.21px; top: 352.40px; width: 72.28px; height: 15.97px;">4:1</div>
+<div class="block" style="left: 672.49px; top: 352.40px; width: 78.53px; height: 15.97px;">—</div>
+<div class="block" style="left: 153.34px; top: 367.68px; width: 75.76px; height: 17.36px;">FID (Stu.)</div>
+<div class="block" style="left: 229.10px; top: 367.68px; width: 56.29px; height: 17.36px;">12.15</div>
+<div class="block" style="left: 285.39px; top: 368.37px; width: 54.90px; height: 16.67px;">10.97</div>
+<div class="block" style="left: 340.29px; top: 368.37px; width: 61.85px; height: 16.67px;">8.78</div>
+<div class="block" style="left: 401.45px; top: 368.37px; width: 61.85px; height: 16.67px;">6.29</div>
+<div class="block" style="left: 463.30px; top: 368.37px; width: 70.19px; height: 16.67px;">4.84</div>
+<div class="block" style="left: 533.49px; top: 368.37px; width: 66.72px; height: 16.67px;">—</div>
+<div class="block" style="left: 600.21px; top: 368.37px; width: 72.28px; height: 16.67px;">4.54</div>
+<div class="block" style="left: 672.49px; top: 368.37px; width: 78.53px; height: 16.67px;">—</div>
+<div class="block" style="left: 153.34px; top: 385.04px; width: 75.76px; height: 20.14px;">FID (Reg.)</div>
+<div class="block" style="left: 229.10px; top: 385.04px; width: 56.29px; height: 20.14px;">45.49</div>
+<div class="block" style="left: 285.39px; top: 385.04px; width: 54.90px; height: 20.14px;">18.72</div>
+<div class="block" style="left: 340.29px; top: 385.04px; width: 61.85px; height: 20.14px;">11.06</div>
+<div class="block" style="left: 402.14px; top: 385.04px; width: 61.86px; height: 20.14px;">9.14</div>
+<div class="block" style="left: 463.30px; top: 385.04px; width: 70.19px; height: 20.14px;">5.05</div>
+<div class="block" style="left: 533.49px; top: 385.04px; width: 66.72px; height: 20.14px;">—</div>
+<div class="block" style="left: 600.21px; top: 385.04px; width: 72.28px; height: 20.14px;">4.62</div>
+<div class="block" style="left: 672.49px; top: 385.04px; width: 78.53px; height: 20.14px;">—</div>
+<div class="block" style="left: 91.12px; top: 483.82px; width: 31.25px; height: 18.02px;">Teacher d = 128</div>
+<div class="block" style="left: 105.31px; top: 539.17px; width: 17.78px; height: 8.57px;">MSE</div>
+<div class="block" style="left: 86.23px; top: 582.78px; width: 36.61px; height: 18.38px;">Joint a = 0.0001</div>
+<div class="block" style="left: 139.00px; top: 620.59px; width: 18.51px; height: 7.96px;">d=64</div>
+<div class="block" style="left: 183.32px; top: 620.64px; width: 18.21px; height: 7.81px;">d=32</div>
+<div class="block" style="left: 227.32px; top: 620.69px; width: 18.62px; height: 7.66px;">d=16</div>
+<div class="block" style="left: 273.66px; top: 620.80px; width: 14.08px; height: 7.45px;">d=8</div>
+<div class="block" style="left: 317.77px; top: 620.91px; width: 13.95px; height: 7.36px;">d=4</div>
+<div class="block" style="left: 362.15px; top: 620.94px; width: 13.97px; height: 7.39px;">d=2</div>
+<div class="block" style="left: 75.29px; top: 644.86px; width: 328.77px; height: 130.75px;">Figure 11. Compression artifacts on the Celeb-A dataset from im- ages generated from a teacher GAN (d = 128), student GAN trained using MSE loss and student GAN trained using joint loss at & = 0.0001. smallest compressed GANs before significant observable degradation is present in the generated images. This obser- vation suggests a potential limit to compression depending on the complexity of the data set.</div>
+<div class="block heading" style="left: 75.98px; top: 794.63px; width: 136.52px; height: 14.64px;">6.2. Our Contributions</div>
+<div class="block" style="left: 75.80px; top: 820.43px; width: 326.64px; height: 49.70px;">Our work contributes to the topic of GAN compression. To summarize, we have made the following contributions in this paper:</div>
+<div class="block" style="left: 90.74px; top: 888.40px; width: 312.20px; height: 48.93px;">· We have developed two compression schemes for GANs using a student-teacher learning architecture (Figures 3, 4).</div>
+<div class="block" style="left: 90.51px; top: 948.31px; width: 312.51px; height: 48.79px;">. We have evaluated the proposed compression methods over MNIST, CIFAR-10, and Celeb-A datasets. Our results show that the quality of generated imagery is</div>
+<div class="block" style="left: 452.74px; top: 437.70px; width: 300.64px; height: 49.47px;">maintained at high compression rates (1669:1, 58:1, 87:1 respectively) as measured by the Inception Score and Frechet Inception Distance metrics.</div>
+<div class="block" style="left: 440.94px; top: 502.56px; width: 313.33px; height: 82.91px;">· We show that training a GAN of the same size with- out knowledge distillation produces comparatively di- minished results, supporting the conjecture that over- parameterization is both helpful and necessary for neu- ral networks to find a good function for GANs.</div>
+<div class="block" style="left: 440.92px; top: 600.92px; width: 312.72px; height: 81.48px;">· We observe a qualitative limit to GAN's compression for all the aforementioned datasets. We conjecture that there exists a fundamental compression limit of GANs similar to Shannon's compression theory (MacKay, 2002).</div>
+<div class="block heading" style="left: 425.76px; top: 704.78px; width: 97.63px; height: 17.16px;">7. Conclusion</div>
+<div class="block" style="left: 425.16px; top: 733.37px; width: 328.92px; height: 181.37px;">Overall, we have demonstrated that applying the knowl- edge distillation method to GAN training can produce com- pressed generators without loss of quality or generalization. More specifically, we demonstrated that the student genera- tors are able to outperform a traditionally trained GAN of the same size and approximate the underlying function of the teacher generator for the whole latent space. This fur- ther supports the necessity for over-parameterization when training an effective generator prior to distillation. Further, a qualitative limit to GAN compression has been observed for MNIST, CIFAR-10 and Celeb-A datasets.</div>
+<div class="block heading" style="left: 425.69px; top: 938.32px; width: 78.81px; height: 15.37px;">References</div>
+<div class="block" style="left: 425.58px; top: 964.52px; width: 328.32px; height: 32.73px;">Allen-Zhu, Z., Li, Y., and Liang, Y. Learning and gener- alization in overparameterized neural networks, going</div>
+<div class="figure" style="left: 85.39px; top: 470.61px; width: 307.78px; height: 158.89px;"><img class="figure-img" src="figures/GAN1/3.1.png" alt="Figure 3.1"/></div>
+</div>
