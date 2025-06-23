@@ -17,10 +17,10 @@ model_id = "prebuilt-layout"
 api_version = os.getenv("API_VERSION")
 subscription_key = os.getenv("SUBSCRIPTION_KEY")
 url_source = "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/rest-api/invoice.pdf"
-pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/GAN (1).pdf"
-output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/chunks/GAN1"
-final_output_json = "/home/vatsal/Documents/VS Code/Azure/R_Models/GAN1.json"
-fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/GAN1"
+pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/D0879824.pdf"
+output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/chunks/exp3"
+final_output_json = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp3.json"
+fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/exp3"
 
 # split the pdf into chunks of 2 pages each, and pass them
 chunk_size = 2
@@ -135,4 +135,4 @@ print("✅ Merged JSON created at:", final_output_json)
 
 
 # extract the data from the JSON file
-layout_to_html(final_output_json, "GAN1.html", figure_image_dir=fig_path)
+layout_to_html(final_output_json, "exp3.html", figure_image_dir=fig_path)

@@ -22,11 +22,14 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
         ".block.footnote { font-size: 10px; font-style: italic; color: #777; }",
         ".block.footer { font-size: 10px; text-align: center; color: #999; }",
         "img.figure-img { width: 100%; height: 100%; object-fit: contain; }",
+        ".barcode { position: absolute;background: white;padding: 2px;overflow: hidden; }",
+        ".barcode-img { width: 100%;height: 100%;object-fit: contain;display: block; }",
         "</style></head><body>"
     ]
 
     paras_by_page = defaultdict(list)
     figures_by_page = defaultdict(list)
+    barcodes_by_page = defaultdict(list)
 
     for para in paragraphs:
         for region in para.get("boundingRegions", []):
@@ -37,6 +40,11 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
         for region in fig.get("boundingRegions", []):
             page = region["pageNumber"]
             figures_by_page[page].append((fig, region))
+
+    for page in data.get("analyzeResult", {}).get("pages", []):
+        page_number = page["pageNumber"]
+        for barcode in page.get("barcodes", []):
+            barcodes_by_page[page_number].append(barcode)
 
     def compute_style(polygon, page_width, page_height):
         xs = polygon[::2]
@@ -94,15 +102,36 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
                     f'<div class="figure" style="{style}; border: 1px dashed red;">[Missing Figure {figure_id}]</div>'
                 )
 
+        # Barcodes
+        for idx, barcode in enumerate(barcodes_by_page.get(page, [])):
+            polygon = barcode.get("polygon", [])
+            if not polygon:
+                continue
+
+            style = compute_style(polygon, page_width, page_height)
+            barcode_id = f"{page}.{idx+1}b"
+            image_path = os.path.join(figure_image_dir, f"{barcode_id}.png")
+            rel_path = os.path.relpath(image_path, os.path.dirname(output_html))
+
+            if os.path.exists(image_path):
+                html_parts.append(
+                    f'<div class="barcode" style="{style}">'
+                    f'<img class="barcode-img" src="{rel_path}" alt="Barcode {barcode_id}"/></div>'
+                )
+            else:
+                html_parts.append(
+                    f'<div class="barcode" style="{style}; border: 1px dashed red;">[Missing Barcode {barcode_id}]</div>'
+                )
+
         html_parts.append("</div>")  # close .page
 
     with open(output_html, "w", encoding="utf-8") as f:
         f.write("\n".join(html_parts))
 
 if __name__ == "__main__":
-    json_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp2.json"
-    output_html = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp2.html"
-    figure_image_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/exp2"
+    json_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp3.json"
+    output_html = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp3.html"
+    figure_image_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/exp3"
 
     layout_to_html(json_path, output_html, figure_image_dir)
     print(f"HTML layout saved to: {output_html}")

@@ -6,6 +6,8 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.ai.documentintelligence.models import AnalyzeOutputOption, AnalyzeResult, AnalyzeDocumentRequest, DocumentAnalysisFeature
 
+from get_barcode import crop_from_pdf
+
 def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_offset):
 # def post(endpoint, model_id, key, pdf_path, fig_path):
     
@@ -17,7 +19,6 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
         body = AnalyzeDocumentRequest(bytes_source=f.read()),
         features=[
             DocumentAnalysisFeature.BARCODES,
-            DocumentAnalysisFeature.FORMULAS
         ],
         output=[AnalyzeOutputOption.FIGURES],
     )
@@ -43,17 +44,35 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
                 with open(fig_path+f"/{new_id}.png", "wb") as writer:
                     writer.writelines(response)
 
+    # Save barcodes
+    for page in result.pages:
+        page_num = page.page_number
+        if hasattr(page, "barcodes") and page.barcodes:
+            for count, barcode in enumerate(page.barcodes):
+                if barcode.polygon:
+                    image_name = f"{page_num + page_offset}.{count+1}b"
+                    crop_from_pdf(
+                        pdf_path=pdf_path,
+                        page_number=page_num,
+                        polygon=barcode.polygon,
+                        output_path=fig_path,
+                        image_name=image_name,
+                        page_width=page.width,
+                        page_height=page.height
+                    )
+
 if __name__ == "__main__":
     
-    endpoint = load_dotenv("ENDPOINT")
+    load_dotenv()
+    endpoint = os.getenv("ENDPOINT")
     model_id = "prebuilt-layout"
-    subscription_key = load_dotenv("SUBSCRIPTION_KEY")    
-    pdf_path = "/home/vatsal/Documents/VS Code/Azure/Read_Models/GAN (1).pdf"
-    output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/GAN1"
+    subscription_key = os.getenv("SUBSCRIPTION_KEY")    
+    pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/D0879824.pdf"
+    output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models"
     fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models"
 
     # Define the output JSON path
-    output_json_path = os.path.join(output_dir, "GAN1.json")
+    output_json_path = os.path.join(output_dir, "a1.json")
 
     # Call the post function to analyze the document
     post(endpoint, model_id, subscription_key, pdf_path, output_json_path, fig_path, 0)

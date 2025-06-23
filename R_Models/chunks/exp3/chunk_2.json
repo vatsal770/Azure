@@ -1980,7 +1980,7 @@
         ],
         "role": "pageHeader",
         "content": "US D879,824 S",
-        "id": "661"
+        "id": "662"
       },
       {
         "spans": [
@@ -2006,7 +2006,7 @@
         ],
         "role": "pageNumber",
         "content": "Page 3",
-        "id": "662"
+        "id": "663"
       },
       {
         "spans": [
@@ -2031,7 +2031,7 @@
           }
         ],
         "content": "(56) References Cited U.S. PATENT DOCUMENTS",
-        "id": "663"
+        "id": "664"
       },
       {
         "spans": [
@@ -2056,7 +2056,7 @@
           }
         ],
         "content": "2016/0018978 A1",
-        "id": "664"
+        "id": "665"
       },
       {
         "spans": [
@@ -2081,7 +2081,7 @@
           }
         ],
         "content": "1/2016",
-        "id": "665"
+        "id": "666"
       },
       {
         "spans": [
@@ -2106,7 +2106,7 @@
           }
         ],
         "content": "Zenoff",
-        "id": "666"
+        "id": "667"
       },
       {
         "spans": [
@@ -2131,7 +2131,7 @@
           }
         ],
         "content": "2016/0277802 A1*",
-        "id": "667"
+        "id": "668"
       },
       {
         "spans": [
@@ -2156,7 +2156,7 @@
           }
         ],
         "content": "9/2016",
-        "id": "668"
+        "id": "669"
       },
       {
         "spans": [
@@ -2181,7 +2181,7 @@
           }
         ],
         "content": "Bernstein H04N 21/4788",
-        "id": "669"
+        "id": "670"
       },
       {
         "spans": [
@@ -2206,7 +2206,7 @@
           }
         ],
         "content": "2017/0123390",
-        "id": "670"
+        "id": "671"
       },
       {
         "spans": [
@@ -2231,7 +2231,7 @@
           }
         ],
         "content": "A1",
-        "id": "671"
+        "id": "672"
       },
       {
         "spans": [
@@ -2256,7 +2256,7 @@
           }
         ],
         "content": "5/2017",
-        "id": "672"
+        "id": "673"
       },
       {
         "spans": [
@@ -2281,7 +2281,7 @@
           }
         ],
         "content": "Barco et al.",
-        "id": "673"
+        "id": "674"
       },
       {
         "spans": [
@@ -2307,7 +2307,7 @@
         ],
         "role": "sectionHeading",
         "content": "OTHER PUBLICATIONS",
-        "id": "674"
+        "id": "675"
       },
       {
         "spans": [
@@ -2332,7 +2332,7 @@
           }
         ],
         "content": "Terdiman, \"Like Vine, Twitter will make you find new followers from scratch on Periscope\", venturebeat.com, Mar. 26 2015, 1 page.",
-        "id": "675"
+        "id": "676"
       },
       {
         "spans": [
@@ -2357,7 +2357,7 @@
           }
         ],
         "content": "* cited by examiner",
-        "id": "676"
+        "id": "677"
       },
       {
         "spans": [
@@ -2383,7 +2383,7 @@
         ],
         "role": "pageHeader",
         "content": "U.S. Patent",
-        "id": "677"
+        "id": "678"
       },
       {
         "spans": [
@@ -2409,7 +2409,7 @@
         ],
         "role": "pageHeader",
         "content": "Mar. 31, 2020",
-        "id": "678"
+        "id": "679"
       },
       {
         "spans": [
@@ -2435,7 +2435,7 @@
         ],
         "role": "pageHeader",
         "content": "US D879,824 S",
-        "id": "679"
+        "id": "680"
       },
       {
         "spans": [
@@ -2460,7 +2460,7 @@
           }
         ],
         "content": "S",
-        "id": "680"
+        "id": "681"
       },
       {
         "spans": [
@@ -2485,7 +2485,7 @@
           }
         ],
         "content": "H",
-        "id": "681"
+        "id": "682"
       },
       {
         "spans": [
@@ -2510,7 +2510,7 @@
           }
         ],
         "content": "D",
-        "id": "682"
+        "id": "683"
       }
     ],
     "styles": [],
@@ -2537,7 +2537,7 @@
           }
         ],
         "elements": [
-          "/paragraphs/663",
+          "/paragraphs/664",
           "/tables/1"
         ]
       },
@@ -2553,9 +2553,9 @@
           }
         ],
         "elements": [
-          "/paragraphs/674",
           "/paragraphs/675",
           "/paragraphs/676",
+          "/paragraphs/677",
           "/figures/1"
         ]
       }
@@ -2585,7 +2585,7 @@
           }
         ],
         "elements": [
-          "/paragraphs/682"
+          "/paragraphs/683"
         ]
       }
     ]

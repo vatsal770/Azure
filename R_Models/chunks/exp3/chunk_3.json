@@ -3376,7 +3376,7 @@
         ],
         "role": "title",
         "content": "UNITED STATES PATENT AND TRADEMARK OFFICE CERTIFICATE OF CORRECTION",
-        "id": "683"
+        "id": "684"
       },
       {
         "spans": [
@@ -3401,7 +3401,7 @@
           }
         ],
         "content": "PATENT NO.",
-        "id": "684"
+        "id": "685"
       },
       {
         "spans": [
@@ -3426,7 +3426,7 @@
           }
         ],
         "content": ": D879,824 S",
-        "id": "685"
+        "id": "686"
       },
       {
         "spans": [
@@ -3451,7 +3451,7 @@
           }
         ],
         "content": "APPLICATION NO.",
-        "id": "686"
+        "id": "687"
       },
       {
         "spans": [
@@ -3476,7 +3476,7 @@
           }
         ],
         "content": ": 29/674319",
-        "id": "687"
+        "id": "688"
       },
       {
         "spans": [
@@ -3501,7 +3501,7 @@
           }
         ],
         "content": "DATED",
-        "id": "688"
+        "id": "689"
       },
       {
         "spans": [
@@ -3526,7 +3526,7 @@
           }
         ],
         "content": ": March 31, 2020",
-        "id": "689"
+        "id": "690"
       },
       {
         "spans": [
@@ -3551,7 +3551,7 @@
           }
         ],
         "content": "INVENTOR(S)",
-        "id": "690"
+        "id": "691"
       },
       {
         "spans": [
@@ -3576,7 +3576,7 @@
           }
         ],
         "content": ": Hansen et al.",
-        "id": "691"
+        "id": "692"
       },
       {
         "spans": [
@@ -3602,7 +3602,7 @@
         ],
         "role": "pageNumber",
         "content": "Page 1 of 1",
-        "id": "692"
+        "id": "693"
       },
       {
         "spans": [
@@ -3627,7 +3627,7 @@
           }
         ],
         "content": "It is certified that error appears in the above-identified patent and that said Letters Patent is hereby corrected as shown below:",
-        "id": "693"
+        "id": "694"
       },
       {
         "spans": [
@@ -3652,7 +3652,7 @@
           }
         ],
         "content": "On the Title Page",
-        "id": "694"
+        "id": "695"
       },
       {
         "spans": [
@@ -3677,7 +3677,7 @@
           }
         ],
         "content": "Column 2, Item (57), under \"CLAIM\", Line 1, delete \"The\" and insert -- What is claimed is the -- , therefor.",
-        "id": "695"
+        "id": "696"
       },
       {
         "spans": [
@@ -3702,7 +3702,7 @@
           }
         ],
         "content": "Column 2, Item (57), under \"CLAIM\", Line 2, delete \"interface for live video sharing,\" and insert -- interface, -- , therefor.",
-        "id": "696"
+        "id": "697"
       },
       {
         "spans": [
@@ -3727,7 +3727,7 @@
           }
         ],
         "content": "On Page 3, Column 1, Item (56), under \"OTHER PUBLICATIONS\", Line 2, delete \"26\" and insert -- 26, -- , therefor.",
-        "id": "697"
+        "id": "698"
       },
       {
         "spans": [
@@ -3752,7 +3752,7 @@
           }
         ],
         "content": "Signed and Sealed this Tenth Day of June, 2025 Come Man Sweet Coke Morgan Stewart Acting Director of the United States Patent and Trademark Office",
-        "id": "698"
+        "id": "699"
       }
     ],
     "styles": [
@@ -3781,14 +3781,14 @@
           }
         ],
         "elements": [
-          "/paragraphs/683",
+          "/paragraphs/684",
           "/tables/2",
-          "/paragraphs/693",
           "/paragraphs/694",
           "/paragraphs/695",
           "/paragraphs/696",
           "/paragraphs/697",
-          "/paragraphs/698"
+          "/paragraphs/698",
+          "/paragraphs/699"
         ]
       }
     ]
