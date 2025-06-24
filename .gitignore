@@ -1,3 +1,5 @@
 .env
 *.bash
 *__pycache__
+R_Models/chunks/
+R_Models/figures/

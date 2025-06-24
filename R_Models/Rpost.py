@@ -67,7 +67,7 @@ if __name__ == "__main__":
     endpoint = os.getenv("ENDPOINT")
     model_id = "prebuilt-layout"
     subscription_key = os.getenv("SUBSCRIPTION_KEY")    
-    pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/D0879824.pdf"
+    pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/chunks/exp4/chunk_2.pdf"
     output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models"
     fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models"
 
