@@ -21,7 +21,7 @@ def extract_pdf_files(source_folder: str, destination_folder: str):
                     with open(destination_file_path, 'wb') as dest_file:
                         dest_file.write(src_file.read())
 
-source_folder = '/home/vatsal/Downloads/patents_1'  # Replace with your source folder path
-destination_folder = '/home/vatsal/Downloads/patents_1_pdf'  # Replace with your destination folder path
+source_folder = '/home/vatsal/Downloads/patents'  # Replace with your source folder path
+destination_folder = '/home/vatsal/Downloads/patents_pdf'  # Replace with your destination folder path
 
 extract_pdf_files(source_folder, destination_folder)
