@@ -10,11 +10,12 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
     pages = data.get("analyzeResult", {}).get("pages", [])
     figures = data.get("analyzeResult", {}).get("figures", [])
     page_dims = {p["pageNumber"]: (p["width"], p["height"]) for p in pages}
+    page_angles = {p["pageNumber"]: p.get("angle", 0) for p in pages}
 
 
     html_parts = [
         "<html><head><style>",
-        "body { margin: 0; padding: 0; font-family: Arial; }",
+        "body { margin: 0; padding: 0; font-family: 'Times New Roman', Times, serif; }",
         ".page { position: relative; width: 850px; height: 1100px; border: 1px solid #ccc; margin: 20px auto; }",
         ".block, .figure { position: absolute; font-size: 12px; line-height: 1.0; white-space: pre-wrap; }",
         ".block.title { font-size: 16px; font-weight: bold; color: #002855; }",
@@ -82,6 +83,16 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
     }
 
     for page in sorted(page_dims):
+
+        angle = page_angles.get(page, 0)
+
+        # Apply rotation if angle is ±90
+        rotation_style = ""
+        if angle >= 85:
+            rotation_style = "transform: rotate(90deg); transform-origin: top left;"
+        elif angle <= -85:
+            rotation_style = "transform: rotate(-90deg); transform-origin: top left;"
+
         html_parts.append(f'<div class="page" id="page-{page}">')
 
         page_width, page_height = page_dims.get(page, (8.5, 11))
@@ -154,6 +165,7 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
             elif role == "pagefooter":
                 class_name += " footer"
 
+            # html_parts.append(f'<div class="{class_name}" style="{style} {rotation_style}">{content}</div>')
             html_parts.append(f'<div class="{class_name}" style="{style}">{content}</div>')
 
 
@@ -190,9 +202,9 @@ def layout_to_html(json_path, output_html, figure_image_dir=None):
         f.write("\n".join(html_parts))
 
 if __name__ == "__main__":
-    json_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/GAN2.json"
-    output_html = "/home/vatsal/Documents/VS Code/Azure/R_Models/GAN2.html"
-    figure_image_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/GAN1"
+    json_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp4.json"
+    output_html = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp4.html"
+    figure_image_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/exp4"
 
     layout_to_html(json_path, output_html, figure_image_dir)
     print(f"HTML layout saved to: {output_html}")

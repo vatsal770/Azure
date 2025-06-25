@@ -1,0 +1,273 @@
+<html><head><style>
+body { margin: 0; padding: 0; font-family: 'Times New Roman', Times, serif; }
+.page { position: relative; width: 850px; height: 1100px; border: 1px solid #ccc; margin: 20px auto; }
+.block, .figure { position: absolute; font-size: 12px; line-height: 1.0; white-space: pre-wrap; }
+.block.title { font-size: 16px; font-weight: bold; color: #002855; }
+.block.header { font-size: 14px; color: #666; }
+.block.heading { font-size: 12px; font-weight: bold; color: #444; }
+.block.footnote { font-size: 10px; font-style: italic; color: #777; }
+.block.footer { font-size: 10px; text-align: center; color: #999; }
+img.figure-img { width: 100%; height: 100%; object-fit: contain; }
+.barcode { position: absolute;background: white;padding: 2px;overflow: hidden; }
+.barcode-img { width: 100%;height: 100%;object-fit: contain;display: block; }
+.barcode-text { font-size: 10px; text-align: center; font-weight: bold; margin-top: 2px; color: #222; word-break: break-all; }
+.formula-text { font-family: 'Courier New', Courier, monospace;font-size: 12px;color: #111;white-space: pre;font-style: italic;background-color: #f8f8f8; }</style></head><body>
+<div class="page" id="page-1">
+<div class="barcode" style="position:absolute; left: 411.72px; top: 21.59px; position:absolute; width: 320.96px; height: 31.56px;"><img class="barcode-img" src="figures/1.1/1.1b.png" alt="Barcode 1.1b"/></div>
+<div class="barcode-text" style="position:absolute; left: 431.72px; top: 56.59px; position:absolute; width: 320.96px; height: 31.56px;">US011062446B2</div>
+<div class="block heading" style="position:absolute; left: 108.12px; top: 95.77px; position:absolute; width: 249.88px; height: 40.90px;">(12) United States Patent Choi et al.</div>
+<div class="block" style="position:absolute; left: 447.06px; top: 98.66px; position:absolute; width: 284.67px; height: 19.57px;">(10) Patent No .: US 11,062,446 B2</div>
+<div class="block header" style="position:absolute; left: 447.54px; top: 120.34px; position:absolute; width: 283.48px; height: 17.43px;">(45) Date of Patent: Jul. 13, 2021</div>
+<div class="block" style="position:absolute; left: 106.13px; top: 164.87px; position:absolute; width: 293.01px; height: 27.13px;">(54) ANALYZING METHOD FOR PEROVSKITE STRUCTURE USING MACHINE LEARNING</div>
+<div class="block" style="position:absolute; left: 106.29px; top: 204.72px; position:absolute; width: 289.26px; height: 29.42px;">(71) Applicant: POSTECH ACADEMY-INDUSTRY FOUNDATION, Pohang-si (KR)</div>
+<div class="block" style="position:absolute; left: 106.45px; top: 245.83px; position:absolute; width: 275.00px; height: 56.00px;">(72) Inventors: Si-Young Choi, Pohang-si (KR); Gi-Yeop Kim, Gimhae-si (KR); Kyoung-June Ko, Pohang-si (KR); Jin-Hyuk Jang, Ulsan (KR)</div>
+<div class="block" style="position:absolute; left: 106.46px; top: 313.39px; position:absolute; width: 241.51px; height: 28.47px;">(73) Assignee: Rostech Academy-Industry Foundation, Pohang-si (KR)</div>
+<div class="block" style="position:absolute; left: 106.48px; top: 353.25px; position:absolute; width: 301.06px; height: 43.04px;">( * ) Notice: Subject to any disclaimer, the term of this patent is extended or adjusted under 35 U.S.C. 154(b) by 59 days.</div>
+<div class="block" style="position:absolute; left: 106.37px; top: 407.17px; position:absolute; width: 149.44px; height: 15.06px;">(21) Appl. No .: 16/586,854</div>
+<div class="block" style="position:absolute; left: 106.47px; top: 433.88px; position:absolute; width: 164.10px; height: 14.07px;">(22) Filed: Sep. 27, 2019</div>
+<div class="block" style="position:absolute; left: 106.23px; top: 459.76px; position:absolute; width: 229.56px; height: 14.65px;">(65) Prior Publication Data</div>
+<div class="block" style="position:absolute; left: 138.94px; top: 480.73px; position:absolute; width: 200.86px; height: 14.14px;">US 2020/0143533 A1 May 7, 2020</div>
+<div class="block" style="position:absolute; left: 106.32px; top: 507.13px; position:absolute; width: 259.67px; height: 15.02px;">(30) Foreign Application Priority Data</div>
+<div class="block" style="position:absolute; left: 122.41px; top: 533.51px; position:absolute; width: 285.02px; height: 14.03px;">Nov. 7, 2018 (KR) 10-2018-0136190</div>
+<div class="block" style="position:absolute; left: 106.35px; top: 560.18px; position:absolute; width: 73.32px; height: 13.61px;">(51) Int. Cl.</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 571.31px; position:absolute; width: 92.97px; height: 16.06px;">G06K 9/00</div>
+<div class="block" style="position:absolute; left: 226.89px; top: 571.31px; position:absolute; width: 84.67px; height: 16.06px;">(2006.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 587.37px; position:absolute; width: 92.97px; height: 13.84px;">G06T 7/00</div>
+<div class="block" style="position:absolute; left: 226.89px; top: 587.37px; position:absolute; width: 84.67px; height: 13.84px;">(2017.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 600.65px; position:absolute; width: 92.97px; height: 14.40px;">G06T 7/60</div>
+<div class="block" style="position:absolute; left: 226.89px; top: 601.21px; position:absolute; width: 84.67px; height: 13.84px;">(2017.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 615.05px; position:absolute; width: 92.97px; height: 13.84px;">G06T 5/00</div>
+<div class="block" style="position:absolute; left: 226.89px; top: 615.05px; position:absolute; width: 84.67px; height: 13.84px;">(2006.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 628.89px; position:absolute; width: 92.97px; height: 13.84px;">G06T 7/70</div>
+<div class="block" style="position:absolute; left: 226.89px; top: 628.89px; position:absolute; width: 84.67px; height: 13.84px;">(2017.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 642.73px; position:absolute; width: 92.97px; height: 13.84px;">G06N 3/04</div>
+<div class="block" style="position:absolute; left: 226.33px; top: 642.73px; position:absolute; width: 85.23px; height: 14.39px;">(2006.01)</div>
+<div class="block" style="position:absolute; left: 133.92px; top: 656.57px; position:absolute; width: 92.41px; height: 17.71px;">G06N 3/08</div>
+<div class="block" style="position:absolute; left: 226.33px; top: 656.57px; position:absolute; width: 85.23px; height: 17.71px;">(2006.01)</div>
+<div class="block" style="position:absolute; left: 106.35px; top: 671.94px; position:absolute; width: 76.28px; height: 14.48px;">(52) U.S. Cl.</div>
+<div class="block" style="position:absolute; left: 139.45px; top: 685.61px; position:absolute; width: 268.72px; height: 42.77px;">CPC G06T 7/0012 (2013.01); G06N 3/04 (2013.01); G06N 3/08 (2013.01); G06T 5/002 (2013.01); G06T 7/60 (2013.01); G06T 7/70</div>
+<div class="block" style="position:absolute; left: 492.84px; top: 164.26px; position:absolute; width: 240.33px; height: 41.45px;">(2017.01); G06T 2207/10061 (2013.01); G06T 2207/20081 (2013.01); G06T 2207/20084 (2013.01); G06T 2207/30024 (2013.01)</div>
+<div class="block" style="position:absolute; left: 431.14px; top: 206.52px; position:absolute; width: 192.79px; height: 13.90px;">(58) Field of Classification Search</div>
+<div class="block" style="position:absolute; left: 464.22px; top: 220.33px; position:absolute; width: 267.78px; height: 41.32px;">CPC G06N 3/08; G06N 3/04; G06N 3/0454; G06T 2207/10061; G06T 2207/20081; G06T 2207/20084; G06T 2207/30024;</div>
+<div class="block" style="position:absolute; left: 527.02px; top: 262.04px; position:absolute; width: 204.99px; height: 41.17px;">G06T 5/002; G06T 7/0012; G06T 7/60; G06T 7/70; G06T 2207/30136; G06T 7/0004; G01N 21/84; G01N 27/62</div>
+<div class="block" style="position:absolute; left: 463.37px; top: 303.03px; position:absolute; width: 245.48px; height: 15.87px;">See application file for complete search history.</div>
+<div class="block" style="position:absolute; left: 431.24px; top: 329.94px; position:absolute; width: 227.64px; height: 36.93px;">(56) References Cited U.S. PATENT DOCUMENTS</div>
+<div class="block" style="position:absolute; left: 431.64px; top: 372.57px; position:absolute; width: 73.60px; height: 18.82px;">2011/0161361</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 372.57px; position:absolute; width: 29.88px; height: 18.82px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 373.13px; position:absolute; width: 40.95px; height: 18.26px;">6/2011</div>
+<div class="block" style="position:absolute; left: 575.52px; top: 373.13px; position:absolute; width: 66.96px; height: 18.26px;">Csanyi</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 373.13px; position:absolute; width: 94.63px; height: 18.26px;">G16C 20/30</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 391.39px; position:absolute; width: 94.63px; height: 10.52px;">707/769</div>
+<div class="block" style="position:absolute; left: 431.09px; top: 401.36px; position:absolute; width: 74.15px; height: 14.39px;">2013/0189542</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 401.91px; position:absolute; width: 29.88px; height: 13.84px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 401.91px; position:absolute; width: 40.95px; height: 13.84px;">7/2013</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 401.91px; position:absolute; width: 66.41px; height: 13.84px;">Ogimoto</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 401.91px; position:absolute; width: 94.63px; height: 13.84px;">C01G 45/1264</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 415.75px; position:absolute; width: 94.63px; height: 10.52px;">428/701</div>
+<div class="block" style="position:absolute; left: 431.09px; top: 425.16px; position:absolute; width: 74.15px; height: 12.74px;">2016/0285021</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 425.72px; position:absolute; width: 29.88px; height: 12.18px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 425.72px; position:absolute; width: 40.95px; height: 12.18px;">9/2016</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 425.72px; position:absolute; width: 66.41px; height: 12.18px;">Yang</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 425.72px; position:absolute; width: 94.63px; height: 12.73px;">H01L 51/0032</div>
+<div class="block" style="position:absolute; left: 431.09px; top: 437.90px; position:absolute; width: 74.15px; height: 11.62px;">2017/0005296</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 437.90px; position:absolute; width: 29.88px; height: 11.62px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 437.90px; position:absolute; width: 40.95px; height: 11.62px;">1/2017</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 437.90px; position:absolute; width: 66.41px; height: 11.62px;">Soci</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 437.90px; position:absolute; width: 94.63px; height: 11.62px;">H01L 51/5072</div>
+<div class="block" style="position:absolute; left: 430.53px; top: 449.52px; position:absolute; width: 74.71px; height: 11.63px;">2017/0033246</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 449.52px; position:absolute; width: 29.88px; height: 11.63px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 449.52px; position:absolute; width: 40.95px; height: 11.63px;">2/2017</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 449.52px; position:absolute; width: 66.41px; height: 11.63px;">Lee</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 449.52px; position:absolute; width: 94.63px; height: 11.63px;">H01L 31/036</div>
+<div class="block" style="position:absolute; left: 430.53px; top: 460.59px; position:absolute; width: 74.71px; height: 11.63px;">2018/0061541</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 461.15px; position:absolute; width: 29.88px; height: 11.07px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 461.15px; position:absolute; width: 40.95px; height: 11.07px;">3/2018</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 461.15px; position:absolute; width: 66.41px; height: 11.07px;">Araki</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 461.15px; position:absolute; width: 94.63px; height: 11.07px;">C04B 35/624</div>
+<div class="block" style="position:absolute; left: 430.53px; top: 472.22px; position:absolute; width: 74.71px; height: 11.62px;">2018/0175396</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 472.22px; position:absolute; width: 29.88px; height: 11.62px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 472.22px; position:absolute; width: 40.95px; height: 11.62px;">6/2018</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 472.22px; position:absolute; width: 66.41px; height: 11.62px;">Jacobs</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 472.22px; position:absolute; width: 94.63px; height: 11.62px;">H01M 4/9033</div>
+<div class="block" style="position:absolute; left: 430.53px; top: 483.84px; position:absolute; width: 74.71px; height: 15.51px;">2018/0251381</div>
+<div class="block" style="position:absolute; left: 505.24px; top: 483.84px; position:absolute; width: 29.88px; height: 15.51px;">A1*</div>
+<div class="block" style="position:absolute; left: 535.12px; top: 483.84px; position:absolute; width: 40.95px; height: 16.06px;">9/2018</div>
+<div class="block" style="position:absolute; left: 576.07px; top: 483.84px; position:absolute; width: 66.96px; height: 16.06px;">Chung</div>
+<div class="block" style="position:absolute; left: 642.48px; top: 483.84px; position:absolute; width: 94.63px; height: 16.06px;">C01G 99/006</div>
+<div class="block" style="position:absolute; left: 431.50px; top: 503.66px; position:absolute; width: 103.11px; height: 13.91px;">* cited by examiner</div>
+<div class="block" style="position:absolute; left: 430.08px; top: 529.49px; position:absolute; width: 263.97px; height: 42.55px;">Primary Examiner - Tom Y Lu (74) Attorney, Agent, or Firm - Morgan, Lewis & Bockius LLP</div>
+<div class="block" style="position:absolute; left: 431.13px; top: 585.23px; position:absolute; width: 185.28px; height: 14.48px;">(57) ABSTRACT</div>
+<div class="block" style="position:absolute; left: 429.90px; top: 604.31px; position:absolute; width: 302.91px; height: 96.85px;">A method of analyzing a perovskite structure using machine learning, the method comprising the steps of: (a) obtaining an atomic image using an atomic structure simulator; (b) making a CNN model learn the atomic image; and (c) obtaining an atomic image of an actual substance using a TEM or a STEM and then applying the image to the learnt CNN model.</div>
+<div class="block heading" style="position:absolute; left: 505.37px; top: 714.29px; position:absolute; width: 152.00px; height: 14.18px;">4 Claims, 4 Drawing Sheets</div>
+<div class="block heading" style="position:absolute; left: 110.96px; top: 991.35px; position:absolute; width: 178.90px; height: 16.30px;">SIMULATION AND LEARNING</div>
+<div class="block" style="position:absolute; left: 321.24px; top: 990.36px; position:absolute; width: 195.60px; height: 16.07px;">OBTAIN EXPERIMENTAL IMAGE</div>
+<div class="block" style="position:absolute; left: 539.37px; top: 991.04px; position:absolute; width: 186.29px; height: 17.04px;">OCTAHEDRON TILT MAPPING</div>
+<div class="figure" style="position:absolute; left: 108.17px; top: 779.14px; position:absolute; width: 199.07px; height: 198.52px;"><img class="figure-img" src="figures/1.1/1.1.png" alt="Figure 1.1"/></div>
+<div class="figure" style="position:absolute; left: 321.53px; top: 779.81px; position:absolute; width: 196.35px; height: 197.60px;"><img class="figure-img" src="figures/1.1/1.2.png" alt="Figure 1.2"/></div>
+<div class="figure" style="position:absolute; left: 533.62px; top: 780.32px; position:absolute; width: 195.50px; height: 196.72px;"><img class="figure-img" src="figures/1.1/1.3.png" alt="Figure 1.3"/></div>
+</div>
+<div class="page" id="page-2">
+<div class="block" style="position:absolute; left: 461.71px; top: 727.05px; position:absolute; width: 17.48px; height: 208.27px;">SIMULATION AND LEARNING</div>
+<div class="block" style="position:absolute; left: 460.40px; top: 463.80px; position:absolute; width: 17.50px; height: 226.67px;">OBTAIN EXPERIMENTAL IMAGE</div>
+<div class="block" style="position:absolute; left: 415.63px; top: 226.17px; position:absolute; width: 6.60px; height: 32.80px;">K a+a+8+</div>
+<div class="block" style="position:absolute; left: 423.22px; top: 224.82px; position:absolute; width: 14.78px; height: 24.29px;">a-a-a- aCada0</div>
+<div class="block" style="position:absolute; left: 431.84px; top: 254.29px; position:absolute; width: 6.10px; height: 5.67px;">x</div>
+<div class="block" style="position:absolute; left: 461.86px; top: 221.65px; position:absolute; width: 17.23px; height: 215.12px;">OCTAHEDRON TILT MAPPING</div>
+<div class="block" style="position:absolute; left: 605.65px; top: 572.40px; position:absolute; width: 16.78px; height: 45.94px;">FIG. 1</div>
+<div class="block header" style="position:absolute; left: 105.66px; top: 70.05px; position:absolute; width: 125.42px; height: 22.00px;">U.S. Patent</div>
+<div class="block footer" style="position:absolute; left: 279.09px; top: 75.61px; position:absolute; width: 90.92px; height: 16.64px;">Jul. 13, 2021</div>
+<div class="block" style="position:absolute; left: 413.49px; top: 75.66px; position:absolute; width: 88.85px; height: 16.01px;">Sheet 1 of 4</div>
+<div class="block footer" style="position:absolute; left: 582.28px; top: 72.74px; position:absolute; width: 149.77px; height: 20.94px;">US 11,062,446 B2</div>
+<div class="figure" style="position:absolute; left: 213.85px; top: 707.06px; position:absolute; width: 231.55px; height: 230.24px;"><img class="figure-img" src="figures/1.1/2.1.png" alt="Figure 2.1"/></div>
+<div class="figure" style="position:absolute; left: 213.96px; top: 460.99px; position:absolute; width: 231.18px; height: 230.96px;"><img class="figure-img" src="figures/1.1/2.2.png" alt="Figure 2.2"/></div>
+<div class="figure" style="position:absolute; left: 214.68px; top: 216.02px; position:absolute; width: 229.92px; height: 227.88px;"><img class="figure-img" src="figures/1.1/2.3.png" alt="Figure 2.3"/></div>
+</div>
+<div class="page" id="page-3">
+<div class="block" style="position:absolute; left: 209.54px; top: 806.09px; position:absolute; width: 18.22px; height: 94.53px;">FIRST STEP</div>
+<div class="block" style="position:absolute; left: 207.15px; top: 552.86px; position:absolute; width: 18.09px; height: 114.69px;">SECOND STEP</div>
+<div class="block" style="position:absolute; left: 628.48px; top: 605.20px; position:absolute; width: 15.78px; height: 47.86px;">FIG. 2</div>
+<div class="block" style="position:absolute; left: 189.96px; top: 267.83px; position:absolute; width: 18.19px; height: 114.12px;">FOURTH STEP</div>
+<div class="block" style="position:absolute; left: 509.54px; top: 275.77px; position:absolute; width: 17.20px; height: 95.45px;">THIRD STEP</div>
+<div class="block header" style="position:absolute; left: 105.50px; top: 69.83px; position:absolute; width: 125.44px; height: 22.27px;">U.S. Patent</div>
+<div class="block footer" style="position:absolute; left: 278.89px; top: 75.31px; position:absolute; width: 91.13px; height: 17.00px;">Jul. 13, 2021</div>
+<div class="block" style="position:absolute; left: 413.25px; top: 75.28px; position:absolute; width: 89.04px; height: 16.36px;">Sheet 2 of 4</div>
+<div class="block footer" style="position:absolute; left: 582.10px; top: 72.51px; position:absolute; width: 149.87px; height: 21.13px;">US 11,062,446 B2</div>
+<div class="figure" style="position:absolute; left: 238.12px; top: 557.55px; position:absolute; width: 255.27px; height: 415.48px;"><img class="figure-img" src="figures/1.1/3.1.png" alt="Figure 3.1"/></div>
+<div class="figure" style="position:absolute; left: 373.30px; top: 181.21px; position:absolute; width: 128.89px; height: 293.59px;"><img class="figure-img" src="figures/1.1/3.2.png" alt="Figure 3.2"/></div>
+</div>
+<div class="page" id="page-4">
+<div class="block" style="position:absolute; left: 190.91px; top: 616.49px; position:absolute; width: 22.55px; height: 330.96px;">Convolutional neural network (CNN)</div>
+<div class="block" style="position:absolute; left: 217.59px; top: 350.08px; position:absolute; width: 14.37px; height: 36.70px;">aºaºc</div>
+<div class="block" style="position:absolute; left: 230.37px; top: 309.44px; position:absolute; width: 14.36px; height: 39.78px;">ãºb*b*</div>
+<div class="block" style="position:absolute; left: 254.07px; top: 273.83px; position:absolute; width: 12.82px; height: 35.11px;">a*a*a</div>
+<div class="block" style="position:absolute; left: 270.92px; top: 599.16px; position:absolute; width: 18.16px; height: 149.14px;">Convolutional layers</div>
+<div class="block" style="position:absolute; left: 295.70px; top: 254.90px; position:absolute; width: 15.94px; height: 38.51px;">a"a"aº</div>
+<div class="block" style="position:absolute; left: 331.48px; top: 258.07px; position:absolute; width: 12.71px; height: 32.53px;">aaa</div>
+<div class="block" style="position:absolute; left: 369.44px; top: 206.30px; position:absolute; width: 16.39px; height: 122.74px;">Class predictions</div>
+<div class="block" style="position:absolute; left: 413.29px; top: 331.17px; position:absolute; width: 17.15px; height: 163.34px;">Fully connected layers</div>
+<div class="block" style="position:absolute; left: 476.31px; top: 834.63px; position:absolute; width: 17.86px; height: 123.49px;">STEM ABF image</div>
+<div class="block" style="position:absolute; left: 644.45px; top: 594.08px; position:absolute; width: 15.93px; height: 47.48px;">FIG. 3</div>
+<div class="block header" style="position:absolute; left: 105.48px; top: 69.96px; position:absolute; width: 125.71px; height: 22.26px;">U.S. Patent</div>
+<div class="block footer" style="position:absolute; left: 279.16px; top: 75.41px; position:absolute; width: 90.88px; height: 17.04px;">Jul. 13, 2021</div>
+<div class="block" style="position:absolute; left: 413.36px; top: 75.32px; position:absolute; width: 89.03px; height: 16.51px;">Sheet 3 of 4</div>
+<div class="block footer" style="position:absolute; left: 582.15px; top: 72.60px; position:absolute; width: 149.98px; height: 21.26px;">US 11,062,446 B2</div>
+<div class="figure" style="position:absolute; left: 173.78px; top: 184.37px; position:absolute; width: 352.85px; height: 785.82px;"><img class="figure-img" src="figures/1.1/4.1.png" alt="Figure 4.1"/></div>
+</div>
+<div class="page" id="page-5">
+<div class="block header" style="position:absolute; left: 105.51px; top: 69.92px; position:absolute; width: 125.44px; height: 22.04px;">U.S. Patent</div>
+<div class="block header" style="position:absolute; left: 279.00px; top: 75.55px; position:absolute; width: 90.92px; height: 16.62px;">Jul. 13, 2021</div>
+<div class="block header" style="position:absolute; left: 413.25px; top: 75.35px; position:absolute; width: 89.06px; height: 16.13px;">Sheet 4 of 4</div>
+<div class="block header" style="position:absolute; left: 582.09px; top: 72.59px; position:absolute; width: 149.90px; height: 21.00px;">US 11,062,446 B2</div>
+<div class="block" style="position:absolute; left: 196.40px; top: 381.36px; position:absolute; width: 16.06px; height: 38.68px;">aºa0a0</div>
+<div class="block" style="position:absolute; left: 199.87px; top: 654.11px; position:absolute; width: 11.50px; height: 32.65px;">a'a'a'</div>
+<div class="block" style="position:absolute; left: 198.26px; top: 915.39px; position:absolute; width: 13.69px; height: 40.79px;">ata+a+</div>
+<div class="block" style="position:absolute; left: 629.27px; top: 580.25px; position:absolute; width: 16.57px; height: 48.37px;">FIG. 4</div>
+<div class="figure" style="position:absolute; left: 189.73px; top: 187.39px; position:absolute; width: 242.56px; height: 244.30px;"><img class="figure-img" src="figures/1.1/5.1.png" alt="Figure 5.1"/></div>
+<div class="figure" style="position:absolute; left: 190.77px; top: 459.23px; position:absolute; width: 240.87px; height: 240.75px;"><img class="figure-img" src="figures/1.1/5.2.png" alt="Figure 5.2"/></div>
+<div class="figure" style="position:absolute; left: 190.44px; top: 726.87px; position:absolute; width: 238.59px; height: 238.65px;"><img class="figure-img" src="figures/1.1/5.3.png" alt="Figure 5.3"/></div>
+</div>
+<div class="page" id="page-6">
+<div class="block header" style="position:absolute; left: 354.81px; top: 75.26px; position:absolute; width: 127.73px; height: 17.30px;">US 11,062,446 B2</div>
+<div class="block title" style="position:absolute; left: 126.71px; top: 97.27px; position:absolute; width: 259.71px; height: 44.35px;">1 ANALYZING METHOD FOR PEROVSKITE STRUCTURE USING MACHINE LEARNING</div>
+<div class="block heading" style="position:absolute; left: 200.83px; top: 161.75px; position:absolute; width: 111.54px; height: 13.25px;">TECHNICAL FIELD</div>
+<div class="block heading" style="position:absolute; left: 416.24px; top: 173.26px; position:absolute; width: 5.41px; height: 9.44px;">5</div>
+<div class="block" style="position:absolute; left: 105.24px; top: 192.13px; position:absolute; width: 302.48px; height: 125.76px;">The present invention relates to a method of analyzing a perovskite structure using machine learning, and more par- ticularly, to a method in which atomic structure data acquired through a transmission electron microscope (TEM) or scanning transmission electron microscope (STEM) can be analyzed by using a machine learning technique, and atom arrangement positions, particularly, an octahedral oxy- gen structure can be analyzed up to a level of several picometer unit.</div>
+<div class="block" style="position:absolute; left: 413.94px; top: 242.34px; position:absolute; width: 10.91px; height: 9.77px;">10</div>
+<div class="block" style="position:absolute; left: 413.66px; top: 311.54px; position:absolute; width: 10.75px; height: 9.80px;">15</div>
+<div class="block heading" style="position:absolute; left: 197.69px; top: 335.25px; position:absolute; width: 117.51px; height: 13.15px;">BACKGROUND ART</div>
+<div class="block" style="position:absolute; left: 105.63px; top: 365.80px; position:absolute; width: 317.95px; height: 110.39px;">Oxides having a perovskite structure have very useful characteristics for superconductivity, ferroelectricity, mag- 20 netoresistivity, and thus, various research are being carried out as a functional material. Such characteristics of perov- skite material are due to bond hybridization of the d-orbital of transition metals and the p-orbital of oxygen and causes octahedral tilt of the oxygen and transition metals in an 25 atomic structure.</div>
+<div class="block" style="position:absolute; left: 105.55px; top: 478.79px; position:absolute; width: 303.41px; height: 98.45px;">Thus, the imaging and analysis of octahedral tilt structure is an indispensable factor for controlling and designing characteristics of functional oxides. In particular, octahedral tilt is changed into another form according to stress, defect, and the like in a local region such as an interface, and the physical property also varies, and thus, the octahedral tilt structure of oxygen should be analyzed at a unit lattice level.</div>
+<div class="block" style="position:absolute; left: 413.56px; top: 519.54px; position:absolute; width: 11.05px; height: 10.19px;">30</div>
+<div class="block" style="position:absolute; left: 105.39px; top: 579.06px; position:absolute; width: 303.32px; height: 151.86px;">The oxygen octahedral structures are classified into 23 tilt systems having: a, b, c according to comparison of rotation angles (expressed in a form such as aaa when all are the same and expressed in a form such as aac when one direction is different); and + (the same rotation direction), 0 (case of no-rotation), and - (opposite rotation direction) according to comparison of rotation directions with next unit cell. For example, when there are octahedral tilts in two direction and the angles thereof are the same and the rotation directions are anti-parallel with a next unit cell, the expression thereof can be aºb"b".</div>
+<div class="block" style="position:absolute; left: 413.97px; top: 588.31px; position:absolute; width: 10.23px; height: 10.42px;">35</div>
+<div class="block" style="position:absolute; left: 413.75px; top: 657.90px; position:absolute; width: 10.55px; height: 9.95px;">40</div>
+<div class="block" style="position:absolute; left: 413.40px; top: 726.98px; position:absolute; width: 10.81px; height: 10.36px;">45</div>
+<div class="block" style="position:absolute; left: 105.63px; top: 734.17px; position:absolute; width: 303.09px; height: 97.22px;">Meanwhile, development of scanning transmission elec- tron microscope (STEM) having a merit of being capable of obtaining an atomic structure image having a high resolution of 50 picometer level has been enhancing the understanding about a structure of a material and has remarkably affected the associating the relationship between the structure and characteristics of a material.</div>
+<div class="block" style="position:absolute; left: 413.95px; top: 796.76px; position:absolute; width: 10.39px; height: 9.40px;">50</div>
+<div class="block" style="position:absolute; left: 105.38px; top: 833.89px; position:absolute; width: 317.55px; height: 97.29px;">However, the degree of structural variation generated in the oxygen octahedron is at a picometer level on a STEM image, and in case of current commercialized STEM data, it 55 is not easy to observe and analyze the data due to noise and the data is easily affected by a subjective view of an observer, and thus, there is difficulty in accurate structural analysis.</div>
+<div class="block heading" style="position:absolute; left: 185.73px; top: 949.95px; position:absolute; width: 141.17px; height: 12.89px;">PRIOR ART DOCUMENT</div>
+<div class="block heading" style="position:absolute; left: 211.30px; top: 985.24px; position:absolute; width: 90.18px; height: 12.33px;">Patent Document</div>
+<div class="block" style="position:absolute; left: 105.74px; top: 1015.82px; position:absolute; width: 301.19px; height: 26.70px;">(Patent Document 1) Korean Patent Publication No. 2006-0033740</div>
+<div class="block heading" style="position:absolute; left: 541.76px; top: 97.10px; position:absolute; width: 78.83px; height: 30.54px;">2 DISCLOSURE</div>
+<div class="block" style="position:absolute; left: 533.08px; top: 144.05px; position:absolute; width: 96.41px; height: 13.04px;">Technical Problem</div>
+<div class="block" style="position:absolute; left: 430.19px; top: 173.26px; position:absolute; width: 302.35px; height: 102.21px;">The present invention provides a method in which oxygen octahedral tilt system of a perovskite material can be auto- matically classified, and atom arrangement positions, par- ticularly, an octahedral oxygen structure can be analyzed up to a level of several picometer unit through a statistical analysis of an obtained STEM image by applying a machine learning technique.</div>
+<div class="block heading" style="position:absolute; left: 532.86px; top: 287.23px; position:absolute; width: 96.70px; height: 13.53px;">Technical Solution</div>
+<div class="block" style="position:absolute; left: 430.07px; top: 316.30px; position:absolute; width: 302.56px; height: 116.20px;">According to an embodiment of the present invention, the present invention provides a method of analyzing a perov- skite structure using machine learning, the method including the steps of: (a) obtaining an atomic image using an atomic structure simulator; (b) making a CNN model learn the atomic image; and (c) obtaining an atomic image of an actual substance using a TEM or a STEM and then applying the image to the learnt CNN model.</div>
+<div class="block" style="position:absolute; left: 429.70px; top: 432.46px; position:absolute; width: 302.77px; height: 58.03px;">In addition, preferably, the atomic image in step (a) may be obtained by using a perovskite octahedron tilt structure confirmed through an experiment, and a computed perov- skite octahedron tilt structure model.</div>
+<div class="block" style="position:absolute; left: 430.17px; top: 489.93px; position:absolute; width: 302.12px; height: 70.29px;">In addition, preferably, the CNN model in step (b) may include: a convolutional layer which extracts a geometric feature from the atomic image; and a fully connected layer which connects the geometric feature and specific classifi- cation of the perovskite octahedron.</div>
+<div class="block" style="position:absolute; left: 430.18px; top: 558.96px; position:absolute; width: 302.05px; height: 29.29px;">In addition, preferably, in step (c), an oxygen octahedron tilt system may be determined and classified.</div>
+<div class="block" style="position:absolute; left: 430.11px; top: 585.21px; position:absolute; width: 302.43px; height: 58.23px;">In addition, preferably, in step (c), coordinate information of each unit lattice of the perovskite structure and a prob- ability about a structure which the unit lattice has may be output.</div>
+<div class="block" style="position:absolute; left: 428.67px; top: 641.94px; position:absolute; width: 303.96px; height: 71.65px;">In addition, preferably, the atomic image is constructed by using the coordinate information of each unit lattice of the perovskite structure and the probability about a structure which the unit lattice has, whereby oxygen octahedron tilt mapping may be performed.</div>
+<div class="block heading" style="position:absolute; left: 525.30px; top: 724.62px; position:absolute; width: 111.75px; height: 14.27px;">Advantageous Effects</div>
+<div class="block" style="position:absolute; left: 430.09px; top: 751.76px; position:absolute; width: 302.41px; height: 83.99px;">The method according to the present invention makes it possible to statistically analyze atomic structure data required to discover a mechanism with which novel char- acteristics of perovskite oxides can be finely adjusted, and thus, the method may be used to understand an atomic structure transition phenomenon in a local area.</div>
+<div class="block" style="position:absolute; left: 413.79px; top: 835.76px; position:absolute; width: 319.38px; height: 207.53px;">An image observed through a TEM or a STEM may include several hundreds of unit lattices having different tilt structures, and thus, it is impossible to directly and manually analyze and maintain objectivity. However, the method according to the present invention is capable of automati- cally classifying oxygen octahedron tilts and may be par- ticularly useful for analyzing a tilt distribution in an oxide 60 thin film which has an abrupt change in oxygen octahedron tilts on an interface between the thin film and a substrate. Thus, the present invention may contribute to inducement of standardization of atomic structure analysis and design technology, improvement in the amount and speed of image 65 analysis processing, unknown material property analysis, accumulation of data about local atomic structure and asso- ciative database creation, and the like.</div>
+</div>
+<div class="page" id="page-7">
+<div class="block header" style="position:absolute; left: 354.74px; top: 74.97px; position:absolute; width: 127.87px; height: 17.79px;">US 11,062,446 B2</div>
+<div class="block" style="position:absolute; left: 252.44px; top: 97.13px; position:absolute; width: 8.17px; height: 14.32px;">3</div>
+<div class="block" style="position:absolute; left: 577.01px; top: 97.24px; position:absolute; width: 8.69px; height: 13.79px;">4</div>
+<div class="block" style="position:absolute; left: 104.98px; top: 113.85px; position:absolute; width: 302.76px; height: 43.37px;">In addition, the method according to the present invention has a merit of enabling more accurate analysis as data is accumulated.</div>
+<div class="block heading" style="position:absolute; left: 169.26px; top: 170.40px; position:absolute; width: 173.88px; height: 13.73px;">DESCRIPTION OF DRAWINGS</div>
+<div class="block" style="position:absolute; left: 105.65px; top: 199.53px; position:absolute; width: 301.92px; height: 29.36px;">FIG. 1 illustrates a flow of an analysis according to an embodiment of the present invention.</div>
+<div class="block" style="position:absolute; left: 104.96px; top: 227.34px; position:absolute; width: 303.08px; height: 45.31px;">FIG. 2 illustrates a training process through a CNN and output values thereof according to an embodiment of the present invention.</div>
+<div class="block" style="position:absolute; left: 105.57px; top: 272.47px; position:absolute; width: 301.84px; height: 28.86px;">FIG. 3 illustrates a structure of a convolutional neural network (CNN).</div>
+<div class="block" style="position:absolute; left: 105.57px; top: 301.02px; position:absolute; width: 302.10px; height: 30.34px;">FIG. 4 illustrates a result of performing an analysis according to an embodiment of the present invention.</div>
+<div class="block heading" style="position:absolute; left: 219.77px; top: 343.39px; position:absolute; width: 73.16px; height: 13.41px;">BEST MODE</div>
+<div class="block" style="position:absolute; left: 105.47px; top: 372.16px; position:absolute; width: 318.55px; height: 145.48px;">Hereinafter, embodiments of the present invention will be described in detail regarding the configuration and actions thereof with reference to the accompanying drawings. Here- inafter, detailed descriptions related to well-known func- tions or configurations will be ruled out in order not to unnecessarily obscure subject matters of the present inven- 25 tion. Furthermore, when it is described that one part "includes" some components, it does not mean that other components are excluded but means that other elements may be further included if there is no specific contrary indication.</div>
+<div class="block" style="position:absolute; left: 105.01px; top: 516.47px; position:absolute; width: 317.60px; height: 154.19px;">A method according to the present invention roughly 30 includes the steps of: obtaining an image through a STEM image simulation from a perovskite structure model which has a perovskite octahedral tilt structure and various tilt structures confirmed by an experiment (first step); making a CNN learn the image (second step); obtaining a STEM 35 image from an actual specimen required to be analyzed (third step); and decomposing the STEM image obtained in third step using a learnt CNN model for each unit lattice and analyzing the type of a tilt structure which each unit lattice has (fourth step).</div>
+<div class="block" style="position:absolute; left: 118.10px; top: 668.86px; position:absolute; width: 215.21px; height: 15.15px;">First Step (Generation of Training Image)</div>
+<div class="block" style="position:absolute; left: 105.43px; top: 681.54px; position:absolute; width: 302.69px; height: 57.66px;">A machine learning technique is indispensably provided with a large number of training examples, and should have prior knowledge, for training, about the structure that a specific image has.</div>
+<div class="block" style="position:absolute; left: 105.50px; top: 738.53px; position:absolute; width: 319.21px; height: 83.90px;">To this end, in an embodiment of the present invention, not only the existing octahedral tilt structures confirmed through experiments but also the octahedral tilt structure model computed by a first principle computation and the like is obtained, and on the basis of these, an atomic image is 50 obtained by using an atomic structure simulator.</div>
+<div class="block" style="position:absolute; left: 105.38px; top: 821.12px; position:absolute; width: 319.19px; height: 98.00px;">At this point, various training images are obtained, and in order to generate an image similar to an actual image, a noise that may be generated in an experimental process is artifi- cially added (step 1 and step 2 in FIG. 2). Accordingly, the 55 information about each given data point is accurately defined, and a database provided with a large number of examples is constructed.</div>
+<div class="block" style="position:absolute; left: 118.13px; top: 918.66px; position:absolute; width: 169.84px; height: 14.36px;">Second Step (Machine Learning)</div>
+<div class="block" style="position:absolute; left: 105.34px; top: 932.82px; position:absolute; width: 319.29px; height: 111.72px;">In an embodiment of the present invention, machine 60 learning is performed on the atomic image obtained through the atomic structure simulator by using a convolutional neural network (CNN) technique. The CNN is one of machine learning techniques in which a preprocessing is performed on data through a convolution process which is a 65 filtering process for deriving a feature parts with respect to an image, and then, a deep learning step is performed.</div>
+<div class="block" style="position:absolute; left: 416.20px; top: 113.76px; position:absolute; width: 316.28px; height: 97.21px;">Specifically, as shown in FIG. 3, the CNN used in an embodiment of the present invention is configured from: a convolutional layer which builds geometrically representa- tive portions in a provided STEM annular bright field (ABF) 5 image; and a fully connected layer which connects the geometrically representative portions and specific classifi- cation.</div>
+<div class="block" style="position:absolute; left: 413.95px; top: 211.41px; position:absolute; width: 318.71px; height: 236.95px;">First, in the convolutional layer, the image is divided into a predetermined size, and characteristic portions are filtered 10 and extracted. For example, as shown in FIG. 4, when oxygen octahedral tilts are ata+a+, a"a"a", and aºaºaº, fil- tering is performed so that a structure can be determined through the ratio of the position of A cation and oxygen, separation of oxygen atom, and the like. In FIG. 4, large, 15 black circles represent cations, and small, almost gray circles represent oxygen atoms. In a+a+a+ structure, the octahedron is shown to be rotated such that oxygen atoms regularly approach and are away from cations. In a a a structure, a dumbbell structure is shown such that oxygen 20 atoms having been overlapped are separated because the octahedrons on the front surface portion and the rear surface portion rotate in directions opposite to each other. In aºaºaº structure, since tilt does not occur, the distances between oxygen atoms are constant.</div>
+<div class="block" style="position:absolute; left: 430.09px; top: 447.06px; position:absolute; width: 302.45px; height: 42.77px;">Next, in the fully connected layer, the features in the image of the filtered portion are accepted, and the classifi- cation of oxygen octahedral tilts is determined and decided.</div>
+<div class="block" style="position:absolute; left: 429.90px; top: 487.60px; position:absolute; width: 302.57px; height: 57.95px;">The CNN performs a self-test using the training image prepared in first step, and in order to make accurate decision, at least several tens, furthermore, several hundreds of train- ing processes are performed.</div>
+<div class="block" style="position:absolute; left: 443.13px; top: 544.39px; position:absolute; width: 199.55px; height: 14.94px;">Third Step (Actual Image Obtainment)</div>
+<div class="block" style="position:absolute; left: 430.17px; top: 558.15px; position:absolute; width: 303.11px; height: 70.10px;">An actual STEM image of a specimen is obtained by using STEM equipment. Meanwhile, in an embodiment of the present invention, STEM equipment was used, but another analysis image which can be used for analyzing the structure of a matter may be used.</div>
+<div class="block" style="position:absolute; left: 442.27px; top: 627.47px; position:absolute; width: 182.38px; height: 14.93px;">Fourth Step (Analysis Using CNN)</div>
+<div class="block" style="position:absolute; left: 413.94px; top: 641.17px; position:absolute; width: 318.49px; height: 70.64px;">The actual STEM image obtained in third step is applied 40 to the CNN model. At this point, feature portions in the obtained image are extracted through the convolutional layer, and the oxygen octahedron tilt is determined through the subsequent fully connected layer.</div>
+<div class="block" style="position:absolute; left: 413.85px; top: 710.70px; position:absolute; width: 318.59px; height: 84.13px;">Accordingly, coordinate information of each unit lattice 45 and a probability about the structure that the corresponding lattice has, are output, and an atomic image is again con- structed by using the coordinate information and the prob- ability and thus, oxygen octahedron tilt mapping is per- formed (FIG. 1).</div>
+<div class="block" style="position:absolute; left: 442.66px; top: 807.76px; position:absolute; width: 132.14px; height: 13.64px;">The invention claimed is:</div>
+<div class="block" style="position:absolute; left: 430.31px; top: 821.77px; position:absolute; width: 301.70px; height: 28.18px;">1. A method of analyzing a perovskite structure using machine learning, the method comprising the steps of:</div>
+<div class="block" style="position:absolute; left: 443.44px; top: 849.60px; position:absolute; width: 288.92px; height: 27.42px;">(a) obtaining an atomic image using an atomic structure simulator;</div>
+<div class="block" style="position:absolute; left: 443.17px; top: 876.36px; position:absolute; width: 289.03px; height: 29.47px;">(b) making a convolutional neural network (CNN) model learn the atomic image;</div>
+<div class="block" style="position:absolute; left: 443.14px; top: 904.98px; position:absolute; width: 289.56px; height: 68.40px;">(c) obtaining an atomic image of an actual substance using a transmission electron microscope (TEM) or a scanning transmission electron microscope (STEM), and then applying the atomic image to the learned CNN model; and</div>
+<div class="block" style="position:absolute; left: 443.32px; top: 973.86px; position:absolute; width: 288.65px; height: 56.12px;">(d) analyzing the atomic image of the actual substance by the CNN model, and providing an output of the CNN model in relation to the perovskite structure, wherein in step (d):</div>
+<div class="block" style="position:absolute; left: 442.47px; top: 1029.58px; position:absolute; width: 281.18px; height: 14.74px;">an oxygen octahedron tilt is determined and classified;</div>
+</div>
+<div class="page" id="page-8">
+<div class="block header" style="position:absolute; left: 355.23px; top: 75.80px; position:absolute; width: 127.36px; height: 16.49px;">US 11,062,446 B2</div>
+<div class="block" style="position:absolute; left: 252.99px; top: 97.96px; position:absolute; width: 8.25px; height: 12.97px;">5</div>
+<div class="block" style="position:absolute; left: 577.41px; top: 98.27px; position:absolute; width: 8.18px; height: 12.55px;">6</div>
+<div class="block" style="position:absolute; left: 118.66px; top: 115.21px; position:absolute; width: 302.81px; height: 82.69px;">a probability about a structure which a unit lattice of the perovskite structure has is output; and the atomic image of the actual substance is constructed by using the probability about the structure which the unit lattice has, whereby oxygen octahedron tilt mapping is 5 performed.</div>
+<div class="block" style="position:absolute; left: 118.70px; top: 198.52px; position:absolute; width: 135.02px; height: 12.95px;">2. The method of claim 1,</div>
+<div class="block" style="position:absolute; left: 118.81px; top: 212.31px; position:absolute; width: 288.08px; height: 14.32px;">wherein the atomic image in step (a) is obtained by using:</div>
+<div class="block" style="position:absolute; left: 130.87px; top: 226.38px; position:absolute; width: 293.85px; height: 41.52px;">a perovskite octahedron tilt structure confirmed through an experiment; and 10 a computed perovskite octahedron tilt structure model.</div>
+<div class="block" style="position:absolute; left: 118.75px; top: 267.96px; position:absolute; width: 135.59px; height: 12.89px;">3. The method of claim 1,</div>
+<div class="block" style="position:absolute; left: 118.81px; top: 281.59px; position:absolute; width: 241.29px; height: 14.19px;">wherein the CNN model in step (b) comprises:</div>
+<div class="block" style="position:absolute; left: 131.04px; top: 295.75px; position:absolute; width: 293.50px; height: 27.44px;">a convolutional layer which extracts a geometric fea- ture from the atomic image; and 15</div>
+<div class="block" style="position:absolute; left: 131.25px; top: 323.60px; position:absolute; width: 276.17px; height: 40.08px;">a fully connected layer which connects the geometric feature and specific classification of a perovskite octahedron.</div>
+<div class="block" style="position:absolute; left: 118.85px; top: 364.79px; position:absolute; width: 135.04px; height: 12.88px;">4. The method of claim 2,</div>
+<div class="block" style="position:absolute; left: 118.65px; top: 378.85px; position:absolute; width: 305.90px; height: 13.71px;">wherein artificial noise is added to the atomic image. 20</div>
+<div class="block" style="position:absolute; left: 216.21px; top: 401.69px; position:absolute; width: 24.94px; height: 6.25px;">* **</div>
+<div class="block" style="position:absolute; left: 253.98px; top: 401.54px; position:absolute; width: 5.58px; height: 5.99px;">**</div>
+<div class="block" style="position:absolute; left: 272.83px; top: 401.41px; position:absolute; width: 24.05px; height: 6.49px;">* *</div>
+</div>
+<div class="page" id="page-9">
+<div class="block title" style="position:absolute; left: 220.66px; top: 61.58px; position:absolute; width: 408.32px; height: 42.40px;">UNITED STATES PATENT AND TRADEMARK OFFICE CERTIFICATE OF CORRECTION</div>
+<div class="block" style="position:absolute; left: 52.57px; top: 120.13px; position:absolute; width: 140.56px; height: 21.04px;">PATENT NO.</div>
+<div class="block" style="position:absolute; left: 193.13px; top: 120.13px; position:absolute; width: 141.11px; height: 21.04px;">: 11,062,446 B2</div>
+<div class="block" style="position:absolute; left: 52.57px; top: 141.17px; position:absolute; width: 140.56px; height: 16.61px;">APPLICATION NO.</div>
+<div class="block" style="position:absolute; left: 193.13px; top: 141.17px; position:absolute; width: 141.67px; height: 16.61px;">: 16/586854</div>
+<div class="block" style="position:absolute; left: 52.57px; top: 157.78px; position:absolute; width: 140.56px; height: 17.71px;">DATED</div>
+<div class="block" style="position:absolute; left: 193.13px; top: 157.78px; position:absolute; width: 141.67px; height: 17.71px;">: July 13, 2021</div>
+<div class="block" style="position:absolute; left: 52.57px; top: 175.49px; position:absolute; width: 140.56px; height: 20.48px;">INVENTOR(S)</div>
+<div class="block" style="position:absolute; left: 193.13px; top: 175.49px; position:absolute; width: 141.67px; height: 20.48px;">: Si-Young Choi et al.</div>
+<div class="block" style="position:absolute; left: 712.68px; top: 126.57px; position:absolute; width: 75.96px; height: 17.29px;">Page 1 of 1</div>
+<div class="block" style="position:absolute; left: 59.05px; top: 208.92px; position:absolute; width: 697.22px; height: 15.02px;">It is certified that error appears in the above-identified patent and that said Letters Patent is hereby corrected as shown below:</div>
+<div class="block" style="position:absolute; left: 108.99px; top: 255.98px; position:absolute; width: 429.50px; height: 74.96px;">On the Title Page Delete Item [73] and insert the following: -- Assignee: Postech Academy-Industry Foundation, Pohang-si (KR) --</div>
+<div class="block" style="position:absolute; left: 438.90px; top: 835.89px; position:absolute; width: 322.12px; height: 128.22px;">Signed and Sealed this Tenth Day of June, 2025 Come Man Sweet Coke Morgan Stewart Acting Director of the United States Patent and Trademark Office</div>
+</div>

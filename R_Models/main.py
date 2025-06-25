@@ -17,10 +17,10 @@ model_id = "prebuilt-layout"
 api_version = os.getenv("API_VERSION")
 subscription_key = os.getenv("SUBSCRIPTION_KEY")
 url_source = "https://github.com/Azure-Samples/cognitive-services-REST-api-samples/raw/master/curl/form-recognizer/rest-api/invoice.pdf"
-pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/D0879824.pdf"
-output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/chunks/exp3"
-final_output_json = "/home/vatsal/Documents/VS Code/Azure/R_Models/exp3.json"
-fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/exp3"
+pdf_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/10537633.pdf"
+output_dir = "/home/vatsal/Documents/VS Code/Azure/R_Models/chunks/1.2"
+final_output_json = "/home/vatsal/Documents/VS Code/Azure/R_Models/1.2.json"
+fig_path = "/home/vatsal/Documents/VS Code/Azure/R_Models/figures/1.2"
 
 # split the pdf into chunks of 2 pages each, and pass them
 chunk_size = 2
@@ -44,6 +44,9 @@ figure_offset = 0
 page_offset = 0  # new counter
 
 for i in range(0, total_pages, chunk_size):
+    # Create output directory if it doesn't exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
     chunk_path = os.path.join(output_dir, f"chunk_{i//chunk_size + 1}.pdf")
     
     # Extract 2-page chunk
@@ -135,4 +138,4 @@ print("✅ Merged JSON created at:", final_output_json)
 
 
 # extract the data from the JSON file
-layout_to_html(final_output_json, "exp3.html", figure_image_dir=fig_path)
+layout_to_html(final_output_json, "1.2.html", figure_image_dir=fig_path)

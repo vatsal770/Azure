@@ -1,7 +1,6 @@
-import json
 import os
+import json
 
-from dotenv import load_dotenv
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.documentintelligence import DocumentIntelligenceClient
 from azure.ai.documentintelligence.models import AnalyzeOutputOption, AnalyzeResult, AnalyzeDocumentRequest, DocumentAnalysisFeature
@@ -32,7 +31,13 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
 
     print(f"✅ Saved analysis result to: {output_json_path}")
 
+    # Save figures
+    if not os.path.exists(fig_path):
+        os.makedirs(fig_path)
+
     if result.figures:
+        from PIL import Image
+        import io
         for figure in result.figures:
             if figure.id:
                 # print(f"Downloading figure {figure.id}...")
@@ -41,8 +46,28 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
                 )
                 parts = figure.id.split('.')
                 new_id = f"{int(parts[0]) + page_offset}.{parts[1]}"
-                with open(fig_path+f"/{new_id}.png", "wb") as writer:
-                    writer.writelines(response)
+                save_path = os.path.join(fig_path, f"{new_id}.png")
+
+                # Load image into PIL to check orientation
+                image = Image.open(io.BytesIO(b"".join(response)))
+
+                # Lookup page angle
+                page_angle = next((p["angle"] for p in result.pages if p["pageNumber"] == int(parts[0])), 0)
+
+                # Rotate figure image if needed
+                if page_angle <= -85:
+                    image = image.rotate(90, expand=True)
+                elif page_angle >= 85:
+                    image = image.rotate(-90, expand=True)
+                elif page_angle >= 175:
+                    image = image.rotate(180, expand=True)
+
+
+                # Save rotated or original image
+                image.save(save_path)
+                print(f"✅ Saved figure image: {save_path}")
+                # with open(fig_path+f"/{new_id}.png", "wb") as writer:
+                #     writer.writelines(response)
 
     # Save barcodes
     for page in result.pages:
@@ -63,7 +88,9 @@ def post(endpoint, model_id, key, pdf_path, output_json_path, fig_path, page_off
 
 if __name__ == "__main__":
     
+    from dotenv import load_dotenv
     load_dotenv()
+
     endpoint = os.getenv("ENDPOINT")
     model_id = "prebuilt-layout"
     subscription_key = os.getenv("SUBSCRIPTION_KEY")    
